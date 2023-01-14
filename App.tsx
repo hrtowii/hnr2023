@@ -1,6 +1,6 @@
 import * as React from "react";
+import { View, StyleSheet } from "react-native";
 import { useState } from "react";
-import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 // or any pure javascript modules available in npm
@@ -16,33 +16,25 @@ import { Coffee, BrewInput } from "./components/utils/utils";
 
 export default function App() {
 	const [coffee, setCoffee] = useState<Coffee | null>(null);
-	const [BrewInput, setBrewInput] = useState<BrewInput | null>({
-		ratio: 60,
-		coffee: 15,
-		water: 250
-	});
 	const Stack = createStackNavigator();
 	return (
 		<ApplicationProvider {...eva} theme={eva.light}>
 			<CoffeeContext.Provider value={coffee}>
-				<BrewInputContext.Provider value={BrewInput}>
-					<NavigationContainer>
-						<Stack.Navigator>
-							<Stack.Screen
-								name="Menu"
-								component={Menu}
-								initialParams={{ set: setCoffee }}
-							/>
-							<Stack.Screen 
-								name="Brew" 
-								component={Brew}
-								initialParams={{ set: setBrewInput}}
-							/>
-							<Stack.Screen name="Timer" component={Timer} />
-							<Stack.Screen name="Done" component={Done} />
-						</Stack.Navigator>
-					</NavigationContainer>
-				</BrewInputContext.Provider>
+				<NavigationContainer>
+					<Stack.Navigator>
+						<Stack.Screen
+							name="Menu"
+							component={Menu}
+							initialParams={{ set: setCoffee }}
+						/>
+						<Stack.Screen 
+							name="Brew" 
+							component={Brew}
+						/>
+						<Stack.Screen name="Timer" component={Timer} />
+						<Stack.Screen name="Done" component={Done} />
+					</Stack.Navigator>
+				</NavigationContainer>
 			</CoffeeContext.Provider>
 		</ApplicationProvider>
 	);

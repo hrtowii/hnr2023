@@ -10,17 +10,17 @@ import { Audio } from 'expo-av';
 export default function CountDownCircleTimer(props): any {
 	const coffee = useContext(CoffeeContext);
   
-  const [sound, setSound] = React.useState();
+	const [sound, setSound] = React.useState();
 
-  async function playSound() {
-    console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync( require('../assets/hit.mp3')
-    );
-    setSound(sound);
+	async function playSound() {
+		console.log('Loading Sound');
+		const { sound } = await Audio.Sound.createAsync( require('../assets/hit.mp3')
+		);
+		setSound(sound);
 
-    //console.log('Playing Sound');
-    await sound.playAsync();
-  }
+		//console.log('Playing Sound');
+		await sound.playAsync();
+	}
 
   React.useEffect(() => {
     return sound
@@ -80,7 +80,7 @@ export default function CountDownCircleTimer(props): any {
 				{allDone ? <></> :
 					coffee.steps[currStep].description.replace(
 						/\d{1,3}%/g,
-						(match) => (parseInt(match) / 100) * props.route.params.settings.water + "g",
+						(match) => (parseInt(match) / 100) * props.route.params.brewInput.water + "g",
 					)
 				}
 			</Text>

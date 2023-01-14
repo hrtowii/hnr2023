@@ -8,7 +8,6 @@ import Logo from "../assets/logo.svg";
 import { CoffeeContext } from "../components/context/CoffeeContext";
 
 import {
-  BottomSheet,
   BottomSheetModal,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
@@ -52,19 +51,16 @@ export default function Brew({navigation, route}){
     }, []);
   
     const coffee = useContext(CoffeeContext);
-    const brewInput = useContext(BrewInputContext);
-    const setBrewInput = route.params.set;
+    const [brewInput, setBrewInput] = useState({
+      ratio: 60,
+      coffee: 15, // gramms
+      water: 250, // gramms
+    });
 
     useEffect(() => {
       setBrewInput(coffee.default);
     }, []);
     
-    // setBrewInput(coffee.default);
-    // const [brewInput, setBrewInput] = useState({
-    //   ratio: 60,
-    //   coffee: 15, // gramms
-    //   water: 250, // gramms
-    // });
     const roundNum = (value) => parseFloat(value.toFixed(1));
     function setCoffee(value){
       const prevRatio = brewInput.ratio;
@@ -90,9 +86,6 @@ export default function Brew({navigation, route}){
         coffee: brewInput.coffee / brewInput.ratio * value,
         ratio: value,
       })
-    }
-    function getRatio(){
-      return brewInput.ratio
     }
     
     useEffect(() => {
@@ -132,7 +125,7 @@ export default function Brew({navigation, route}){
             () => {
             navigation.navigate('Timer', {
               duration: 10,
-              settings: settings,
+              brewInput: brewInput,
             })
             }
           }>
