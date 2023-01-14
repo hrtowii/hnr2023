@@ -1,14 +1,7 @@
 export interface Coffee {
 	name: CoffeeList;
-	default: BrewInput;
 	video: string;
 	steps: Step[];
-}
-
-export interface BrewInput {
-	ratio: number,
-	coffee: number, // gramms
-	water: number, // gramms
 }
 
 export type CoffeeList = "V60" | "Aeropress" | "Chemex" | "French Press";

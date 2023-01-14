@@ -14,7 +14,6 @@ import {
 } from '@gorhom/bottom-sheet';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { BrewInputContext } from '../components/context/BrewInputContext';
 
 function EditItem({value, name,  setValue, extraLabel, step}){
   const setVal = setValue;
@@ -52,47 +51,40 @@ export default function Brew({navigation, route}){
     }, []);
   
     const coffee = useContext(CoffeeContext);
-    const brewInput = useContext(BrewInputContext);
-    const setBrewInput = route.params.set;
-
-    useEffect(() => {
-      setBrewInput(coffee.default);
-    }, []);
     
-    // setBrewInput(coffee.default);
-    // const [brewInput, setBrewInput] = useState({
-    //   ratio: 60,
-    //   coffee: 15, // gramms
-    //   water: 250, // gramms
-    // });
+    const [settings, setSettings] = useState({
+      ratio: 60,
+      coffee: 15, // gramms
+      water: 250, // gramms
+    });
     const roundNum = (value) => parseFloat(value.toFixed(1));
     function setCoffee(value){
-      const prevRatio = brewInput.ratio;
+      const prevRatio = settings.ratio;
       if (value < 0) return
-      setBrewInput({
-        ...brewInput,
+      setSettings({
+        ...settings,
         coffee: value,
         water: roundNum(value/ prevRatio * 1000),
       })
     }
     function setWater(value){
-      const prevRatio = brewInput.ratio;
+      const prevRatio = settings.ratio;
       if (value < 0) return
-      setBrewInput({
-        ...brewInput,
+      setSettings({
+        ...settings,
         water: value,
         coffee: roundNum( value * prevRatio / 1000),
       })
     }
     function setRatio(value){
-      setBrewInput({
-        ...brewInput,
-        coffee: brewInput.coffee / brewInput.ratio * value,
+      setSettings({
+        ...settings,
+        coffee: settings.coffee / settings.ratio * value,
         ratio: value,
       })
     }
     function getRatio(){
-      return brewInput.ratio
+      return settings.ratio
     }
     
     useEffect(() => {
@@ -112,10 +104,10 @@ export default function Brew({navigation, route}){
              backgroundColor: '#ffffff', height:"100%",
             borderTopLeftRadius: 20, borderTopRightRadius: 20,
           }}>
-            <Text style={{fontSize:30, fontWeight: "bold", marginBottom:10,}}>brewInput</Text>
-            <EditItem value={brewInput.ratio} setValue={setRatio} name="Ratio" extraLabel="g/ℓ" step={5}/>
-            <EditItem value={brewInput.water} setValue={setWater} name="Water" extraLabel="g" step={5}/>
-            <EditItem value={brewInput.coffee} setValue={setCoffee} name="Coffee" extraLabel="g" step={1}/>
+            <Text style={{fontSize:30, fontWeight: "bold", marginBottom:10,}}>Settings</Text>
+            <EditItem value={getRatio()} setValue={setRatio} name="Ratio" extraLabel="g/ℓ" step={5}/>
+            <EditItem value={settings.water} setValue={setWater} name="Water" extraLabel="g" step={5}/>
+            <EditItem value={settings.coffee} setValue={setCoffee} name="Coffee" extraLabel="g" step={1}/>
           </Layout>
         </BottomSheetModal>
         
