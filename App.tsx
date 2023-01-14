@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 
@@ -11,22 +11,26 @@ import { NavigationContainer } from '@react-navigation/native'
 import { Card } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Menu from './pages/Menu.tsx'
-import Ratio from './pages/Ratio.tsx'
-import Timer from './pages/Timer.tsx'
+import Menu from './pages/Menu'
+import Ratio from './pages/Ratio'
+import Timer from './pages/Timer'
 
+import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+import * as eva from '@eva-design/eva';
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
+    <ApplicationProvider {...eva} theme={eva.light}>
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Ratio" component={Ratio} />
         <Stack.Screen name="Timer" component={Timer} />
+        <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Done" component={Done} />
       </Stack.Navigator>
     </NavigationContainer>
+    </ApplicationProvider>
   );
 }
 
