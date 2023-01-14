@@ -77,12 +77,7 @@ export default function CountDownCircleTimer(props): any {
 				{allDone ? <></> :coffee.steps[currStep].title}
 			</Text>
 			<Text style={{ fontSize: 20, marginBottom: 20 }}>
-				{allDone ? <></> :
-					coffee.steps[currStep].description.replace(
-						/\d{1,3}%/g,
-						(match) => (parseInt(match) / 100) * props.route.params.settings.water + "g",
-					)
-				}
+				{allDone ? <></> :coffee.steps[currStep].description}
 			</Text>
 
 			{allDone ? 

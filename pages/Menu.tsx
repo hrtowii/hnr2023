@@ -4,7 +4,6 @@ import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
 import { V60Image } from "../components/utils/images";
 import Logo from "../assets/logo.svg";
-import { Coffees } from "../components/utils/data";
 
 export default function Menu({ navigation, route }) {
 	useEffect(() => {
@@ -17,25 +16,21 @@ export default function Menu({ navigation, route }) {
 	return (
 		<View style={styles.container}>
       <Logo style={{marginLeft:'auto', marginRight:'auto', marginTop: "30%", marginBottom: "10%"}}/>
-			{Coffees.map((coffee, index) => {
-			// 	only 2 cards per row
-				if (index % 2 === 0) {
-					return (
-						<View style={styles.containerRow} key={index}>
-							<MenuCard
-								coffee={coffee}
-								navigation={navigation}
-								setCoffee={setCoffee}
-							/>
-							<MenuCard
-								coffee={Coffees[index + 1]}
-								navigation={navigation}
-								setCoffee={setCoffee}
-							/>
-						</View>
-					);
-				}
-			})}
+			<View style={styles.containerRow}>
+				<MenuCard
+					navigation={navigation}
+					coffee={{ name: "V60", steps: [] }}
+					setCoffee={setCoffee}
+				/>
+				<MenuCard
+					navigation={navigation}
+					coffee={{ name: "Aeropress", steps: [] }}
+					setCoffee={setCoffee}
+				/>
+			</View>
+			<View style={styles.containerRow}>
+			</View>
+			{/*<Text>test</Text>*/}
 		</View>
 	);
 }
@@ -44,7 +39,7 @@ const styles = StyleSheet.create({
 	container: {
 		display: "flex",
 		flexDirection: "column",
-		backgroundColor: "#fff",
+		backgroundColor: "#ecf0f1",
 	},
 	containerRow: {
 		display: "flex",

@@ -126,13 +126,12 @@ export default function Brew({navigation, route}){
       
       <TouchableOpacity 
         style={{marginTop:"40%", marginLeft: 'auto', marginRight: 'auto'}} 
-        onPress={()=>{navigation.navigate("Timer")}}
+        onPress={()=>{navigation.navigate("Timer", {recipe,ratio})}}
       >
         <Pressable style={styles.ButtonClick} onPress={
             () => {
             navigation.navigate('Timer', {
-              duration: 10,
-              settings: settings,
+              duration: 10
             })
             }
           }>
