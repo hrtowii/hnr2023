@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
+import { useState } from 'react';
 
 export default function Ratio({navigation, route}){
     const recipe = route.params.recipe;
