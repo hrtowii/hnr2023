@@ -1,6 +1,6 @@
 import * as React from "react";
+import { View, StyleSheet } from "react-native";
 import { useState } from "react";
-import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 // or any pure javascript modules available in npm
