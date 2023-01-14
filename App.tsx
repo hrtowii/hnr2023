@@ -16,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Brew" component={BrewButton} />
+        <Stack.Screen name="Brew" component={BrewButton} initialParams={{ initialTime: 10 }}/>
         <Stack.Screen name="Timer" component={Timer} />
       </Stack.Navigator>
     </NavigationContainer>

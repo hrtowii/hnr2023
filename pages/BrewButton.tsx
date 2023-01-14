@@ -4,10 +4,12 @@ import { Text, StyleSheet, View, Pressable } from 'react-native';
 
 var step = 1
 
-export default function BrewButton(props, {navigation, route}): any {
+export default function BrewButton(props): any {
+  const {navigation, route} = props
+  console.log(route);
   return (
     <View style={styles.Container}>
-      <Pressable style={styles.ButtonClick} onPress={() => navigation.navigate('Timer', {duration: props.initialTime})}>
+      <Pressable style={styles.ButtonClick} onPress={() => navigation.navigate('Timer', {duration: route.params.initialTime})}>
         <Text style={styles.Text}>Brew</Text>
       </Pressable>
     </View>
