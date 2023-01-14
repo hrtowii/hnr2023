@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CoffeeContext } from "../components/context/CoffeeContext";
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { Button } from "@ui-kitten/components";
 
@@ -53,12 +53,11 @@ export default function CountDownCircleTimer(props): any {
 				{coffee.steps[currStep].title}
 			</Text>
 			<Text style={{ fontSize: 20, marginBottom: 20 }}>
-				{
-					coffee.steps[currStep].description.replace(
-						/\d{1,3}%/g,
-						(match) => (parseInt(match) / 100) * props.route.params.settings.water + "g",
-					)
-				}
+				{coffee.steps[currStep].description.replace(
+					/\d{1,3}%/g,
+					(match) =>
+						(parseInt(match) / 100) * props.route.params.settings.water + "g",
+				)}
 			</Text>
 
 			<CountdownCircleTimer

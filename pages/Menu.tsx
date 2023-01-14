@@ -1,24 +1,29 @@
-import { Text, View, StyleSheet } from "react-native";
-import { useEffect } from 'react'; 
-import Constants from "expo-constants";
+import { StyleSheet, View } from "react-native";
+import { useEffect } from "react";
 import { MenuCard } from "../components/card/Card";
-import { V60Image } from "../components/utils/images";
 import Logo from "../assets/logo.svg";
 import { Coffees } from "../components/utils/data";
 
 export default function Menu({ navigation, route }) {
 	useEffect(() => {
-    navigation.setOptions({
-      headerShown: false
-    });
-  }, [navigation]);
-  
+		navigation.setOptions({
+			headerShown: false,
+		});
+	}, [navigation]);
+
 	const setCoffee = route.params.set;
 	return (
 		<View style={styles.container}>
-      <Logo style={{marginLeft:'auto', marginRight:'auto', marginTop: "30%", marginBottom: "10%"}}/>
+			<Logo
+				style={{
+					marginLeft: "auto",
+					marginRight: "auto",
+					marginTop: "30%",
+					marginBottom: "10%",
+				}}
+			/>
 			{Coffees.map((coffee, index) => {
-			// 	only 2 cards per row
+				// 	only 2 cards per row
 				if (index % 2 === 0) {
 					return (
 						<View style={styles.containerRow} key={index}>
