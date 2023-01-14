@@ -16,4 +16,7 @@ let addImages = function (x: Coffee): Coffee {
 	return x;
 };
 
-export const Coffees: Coffee[] = [addImages(v60 as Coffee), addImages(v60 as Coffee)];
+export const Coffees: Coffee[] = [
+	addImages(v60 as Coffee),
+	addImages(v60 as Coffee),
+];

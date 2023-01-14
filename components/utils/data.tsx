@@ -1,7 +1,7 @@
 import v60 from "../../assets/recipes/v60.json";
 import { Coffee, Step } from "./utils";
 
-let addImages = function (x): Coffee{
+let addImages = function (x: Coffee): Coffee{
     for (const step of x.steps) {
         if(step.title === "Pour") {
             step.image = "../../assets/stepFavicons/pour.svg";
@@ -20,5 +20,5 @@ let addImages = function (x): Coffee{
 }
 
 export default {
-    "V60": addImages(v60)
+    "V60": addImages(v60 as Coffee)
 };

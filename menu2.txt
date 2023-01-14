@@ -1,11 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
-import { useEffect } from "react";
 import { useContext, useMemo, useRef, useCallback } from "react";
 import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
-import { V60Image } from "../components/utils/images";
-import Logo from "../assets/logo.svg";
-import { Coffees } from "../components/utils/data";
 import { Coffee } from "../components/utils/utils";
 import { CoffeeContext } from "../components/context/CoffeeContext";
 import {
@@ -15,12 +11,8 @@ import {
 import Youtube from "../components/youtubeEmbed/Youtube";
 
 export default function Menu({ navigation, route }) {
-	useEffect(() => {
-		navigation.setOptions({
-			headerShown: false,
-		});
-	}, [navigation]);
-
+	// function move(){
+	// }
 	const setCoffee = route.params.set;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
     const snapPoints = useMemo(() => ['90%'], []);
@@ -51,14 +43,7 @@ export default function Menu({ navigation, route }) {
         	</View>
 
 			</BottomSheetModal>
-      <Logo
-				style={{
-					marginLeft: "auto",
-					marginRight: "auto",
-					marginTop: "30%",
-					marginBottom: "10%",
-				}}
-			/>
+
 			<View style={styles.containerRow}>
 				<MenuCard
 					navigation={navigation}
