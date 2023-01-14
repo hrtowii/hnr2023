@@ -3,11 +3,43 @@ import { CoffeeContext } from "../components/context/CoffeeContext";
 import { StyleSheet, Text, View } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { Button } from "@ui-kitten/components";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Audio } from 'expo-av';
+
 
 export default function CountDownCircleTimer(props): any {
-	//const {duration} = props.route.params
 	const coffee = useContext(CoffeeContext);
+  
+  const [sound, setSound] = useState();
 
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync( require('../assets/sound/heartbeat.mp3')
+    );
+    setSound(sound);
+
+    //console.log('Playing Sound');
+    await sound.playAsync();
+  }
+  async function playSoundEnd() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync( require('../assets/sound/pass.mp3')
+    );
+    setSound(sound);
+
+    //console.log('Playing Sound');
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          //console.log('Unloading Sound');
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+  
 	useEffect(() => {
 		props.navigation.setOptions({
 			headerShown: false,
@@ -25,6 +57,7 @@ export default function CountDownCircleTimer(props): any {
 	const [startTime, setStartTime] = useState(
 		coffee.steps.length > 0 ? coffee.steps[0].time : 0,
 	);
+  const [allDone, setAllDone] = useState(false);
 
 	useEffect(() => {
 		if (completed) {
@@ -39,28 +72,32 @@ export default function CountDownCircleTimer(props): any {
 		<View style={styles.CountDownCircleTimer}>
 			<Text
 				style={{
-					fontSize: 30,
+					fontSize: 20,
 					padding: 0,
 					marginTop: "20%",
 					fontWeight: "bold",
 				}}
 			>
-				Step {currStep + 1}
+				{allDone ? "Done" : `Step ${currStep + 1} / ${coffee.steps.length}`}
 			</Text>
 			<Text
-				style={{ fontSize: 28, padding: 0, marginTop: "30%", marginBottom: 10 }}
+				style={{ fontSize: 60, padding: 0, marginTop: "20%", marginBottom: 10 }}
 			>
-				{coffee.steps[currStep].title}
+				{allDone ? <></> :coffee.steps[currStep].title}
 			</Text>
-			<Text style={{ fontSize: 20, marginBottom: 20 }}>
-				{coffee.steps[currStep].description.replace(
-					/\d{1,3}%/g,
-					(match) =>
-						(parseInt(match) / 100) * props.route.params.settings.water + "g",
-				)}
+			<Text style={{ fontSize: 40, marginBottom: 20 }}>
+				{allDone ? <></> :
+					coffee.steps[currStep].description.replace(
+						/\d{1,3}%/g,
+						(match) => (parseInt(match) / 100) * props.route.params.settings.water + "g",
+					)
+				}
 			</Text>
 
-			<CountdownCircleTimer
+			{allDone ? 
+      <Icon name="check" size={200} color="#000" />
+      :
+      <CountdownCircleTimer
 				isPlaying={isPlaying}
 				duration={startTime}
 				colors="#6F4E37"
@@ -68,9 +105,16 @@ export default function CountDownCircleTimer(props): any {
 					if (remainingTime > 0) {
 						setCompleted(false);
 					}
+          if ([1,2,3].map((x)=>x+1).includes(remainingTime)){
+            setTimeout(playSound, 700);
+          }
+          if (remainingTime === 0+1 ){
+            setTimeout(playSoundEnd, 700);
+          }
 				}}
 				onComplete={() => {
 					if (currStep >= coffee.steps.length - 1) {
+            setAllDone(true);
 						return { shouldRepeat: false };
 					}
 					setCompleted(true);
@@ -81,21 +125,25 @@ export default function CountDownCircleTimer(props): any {
 					<Text style={styles.Text}>{remainingTime}</Text>
 				)}
 			</CountdownCircleTimer>
+      }
 			<View style={{ flexDirection: "row", marginTop: "20%" }}>
-				<Button
-					style={{}}
-					status={"basic"}
+				{allDone ? <></> : <Button
+					style={{borderRadius:8}}
+					status={"primary"}
 					onPress={() => setIsPlaying(!isPlaying)}
+          size={"giant"}
 				>
 					{isPlaying ? "Pause" : "Continue"}
-				</Button>
+				</Button>}
 				<Button
-					style={{ marginLeft: 10 }}
-					status={"basic"}
+					style={{ marginLeft: 10, borderRadius:8}}
+					status={"danger"}
 					onPress={props.navigation.goBack}
+          size={"giant"}
 				>
-					Stop
+          {allDone ? "Back" : "Stop"}
 				</Button>
+        
 			</View>
 		</View>
 	);

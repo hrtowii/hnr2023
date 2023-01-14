@@ -12,6 +12,7 @@ import { ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 import { CoffeeContext } from "./components/context/CoffeeContext";
 import { Coffee } from "./components/utils/utils";
+import * as SplashScreen from 'expo-splash-screen';
 
 export default function App() {
 	const [coffee, setCoffee] = useState<Coffee | null>(null);
