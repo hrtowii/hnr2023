@@ -1,38 +1,41 @@
 import { Text, View, StyleSheet } from "react-native";
+import { useEffect } from 'react'; 
 import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
+import { V60Image } from "../components/utils/images";
+import Logo from "../assets/logo.svg";
+import { Coffees } from "../components/utils/data";
 
 export default function Menu({ navigation, route }) {
-	// function move(){
-	// }
+	useEffect(() => {
+    navigation.setOptions({
+      headerShown: false
+    });
+  }, [navigation]);
+  
 	const setCoffee = route.params.set;
 	return (
 		<View style={styles.container}>
-			<View style={styles.containerRow}>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "V60", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "V60", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
-			</View>
-			<View style={styles.containerRow}>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "Aeropress", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "Aeropress", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
-			</View>
-			{/*<Text>test</Text>*/}
+      <Logo style={{marginLeft:'auto', marginRight:'auto', marginTop: "30%", marginBottom: "10%"}}/>
+			{Coffees.map((coffee, index) => {
+			// 	only 2 cards per row
+				if (index % 2 === 0) {
+					return (
+						<View style={styles.containerRow} key={index}>
+							<MenuCard
+								coffee={coffee}
+								navigation={navigation}
+								setCoffee={setCoffee}
+							/>
+							<MenuCard
+								coffee={Coffees[index + 1]}
+								navigation={navigation}
+								setCoffee={setCoffee}
+							/>
+						</View>
+					);
+				}
+			})}
 		</View>
 	);
 }
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
 	container: {
 		display: "flex",
 		flexDirection: "column",
-		backgroundColor: "#ecf0f1",
+		backgroundColor: "#fff",
 	},
 	containerRow: {
 		display: "flex",

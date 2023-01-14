@@ -14,16 +14,16 @@ interface Props {
 export const Summary = (props: Props) => {
 	const coffee = useContext(CoffeeContext);
 	return (
-        <ScrollView style={styles.scrollView}>
-            {coffee.steps.map((step, index) => (
-                <SummaryCard step={step} index={index} />
-            ))}
-        </ScrollView>
+		<ScrollView style={styles.scrollView}>
+			{coffee.steps.map((step, index) => (
+				<SummaryCard step={step} index={index} />
+			))}
+		</ScrollView>
 	);
 };
 
 const styles = StyleSheet.create({
-    scrollView: {
-        flexDirection: 'column'
-    }
+	scrollView: {
+		flexDirection: "column",
+	},
 });
