@@ -11,6 +11,7 @@ import {
 } from "@ui-kitten/components";
 import * as Animatable from "react-native-animatable";
 
+import Logo from "../assets/logo.svg";
 import { CoffeeContext } from "../components/context/CoffeeContext";
 
 import {
@@ -70,6 +71,7 @@ function EditItem({ value, name, setValue, extraLabel, step }) {
 		</Layout>
 	);
 }
+
 export default function Brew({ navigation, route }) {
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 	const snapPoints = useMemo(() => ["90%"], []);
@@ -202,7 +204,6 @@ const styles = StyleSheet.create({
 		paddingTop: Constants.statusBarHeight,
 		backgroundColor: "#ecf0f1",
 		padding: 8,
-
 		alignItems: "center",
 		justifyContent: "center",
 	},

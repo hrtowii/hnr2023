@@ -1,14 +1,21 @@
 import { Text, View, StyleSheet } from "react-native";
+import { useEffect } from 'react'; 
 import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
 import { V60Image } from "../components/utils/images";
+import Logo from "../assets/logo.svg";\
 
 export default function Menu({ navigation, route }) {
-	// function move(){
-	// }
+	useEffect(() => {
+    navigation.setOptions({
+      headerShown: false
+    });
+  }, [navigation]);
+  
 	const setCoffee = route.params.set;
 	return (
 		<View style={styles.container}>
+      <Logo style={{marginLeft:'auto', marginRight:'auto', marginTop: "30%", marginBottom: "10%"}}/>
 			<View style={styles.containerRow}>
 				<MenuCard
 					navigation={navigation}
