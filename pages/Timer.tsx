@@ -14,7 +14,16 @@ export default function CountDownCircleTimer(props): any {
 
   async function playSound() {
     console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync( require('../assets/hit.mp3')
+    const { sound } = await Audio.Sound.createAsync( require('../assets/sound/heartbeat.mp3')
+    );
+    setSound(sound);
+
+    //console.log('Playing Sound');
+    await sound.playAsync();
+  }
+  async function playSoundEnd() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync( require('../assets/sound/pass.mp3')
     );
     setSound(sound);
 
@@ -63,20 +72,20 @@ export default function CountDownCircleTimer(props): any {
 		<View style={styles.CountDownCircleTimer}>
 			<Text
 				style={{
-					fontSize: 30,
+					fontSize: 20,
 					padding: 0,
 					marginTop: "20%",
 					fontWeight: "bold",
 				}}
 			>
-				{allDone ? "Done" : `Step ${currStep + 1}`}
+				{allDone ? "Done" : `Step ${currStep + 1} / ${coffee.steps.length}`}
 			</Text>
 			<Text
-				style={{ fontSize: 28, padding: 0, marginTop: "30%", marginBottom: 10 }}
+				style={{ fontSize: 60, padding: 0, marginTop: "20%", marginBottom: 10 }}
 			>
 				{allDone ? <></> :coffee.steps[currStep].title}
 			</Text>
-			<Text style={{ fontSize: 20, marginBottom: 20 }}>
+			<Text style={{ fontSize: 40, marginBottom: 20 }}>
 				{allDone ? <></> :
 					coffee.steps[currStep].description.replace(
 						/\d{1,3}%/g,
@@ -97,7 +106,10 @@ export default function CountDownCircleTimer(props): any {
 						setCompleted(false);
 					}
           if ([1,2,3].map((x)=>x+1).includes(remainingTime)){
-            setTimeout(playSound, 500);
+            setTimeout(playSound, 700);
+          }
+          if (remainingTime === 0+1 ){
+            setTimeout(playSoundEnd, 700);
           }
 				}}
 				onComplete={() => {
@@ -116,19 +128,22 @@ export default function CountDownCircleTimer(props): any {
       }
 			<View style={{ flexDirection: "row", marginTop: "20%" }}>
 				{allDone ? <></> : <Button
-					style={{}}
-					status={"basic"}
+					style={{borderRadius:8}}
+					status={"primary"}
 					onPress={() => setIsPlaying(!isPlaying)}
+          size={"giant"}
 				>
 					{isPlaying ? "Pause" : "Continue"}
 				</Button>}
 				<Button
-					style={{ marginLeft: 10 }}
-					status={"basic"}
+					style={{ marginLeft: 10, borderRadius:8}}
+					status={"danger"}
 					onPress={props.navigation.goBack}
+          size={"giant"}
 				>
-					{allDone ? "Back" : "Stop"}
+          {allDone ? "Back" : "Stop"}
 				</Button>
+        
 			</View>
 		</View>
 	);
