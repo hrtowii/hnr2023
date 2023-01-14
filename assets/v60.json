@@ -1,0 +1,67 @@
+{
+	"name": "v60",
+	"video": "https://youtu.be/1oB1oDrDkHM",
+	"image": "assets/coffeeFavicons/v60.png",
+	"steps": [
+		{
+			"title": "pour",
+			"time": 10,
+			"description": "20%"
+		},
+		{
+			"title": "swirl",
+			"time": 5,
+			"description": "Gently"
+		},
+		{
+			"title": "wait",
+			"time": 30,
+			"description": ""
+		},
+		{
+			"title": "pour",
+			"time": 15,
+			"description": "20%"
+		},
+		{
+			"title": "wait",
+			"time": 10,
+			"description": ""
+		},
+		{
+			"title": "pour",
+			"time": 10,
+			"description": "20%"
+		},
+		{
+			"title": "wait",
+			"time": 10,
+			"description": ""
+		},
+		{
+			"title": "pour",
+			"time": 10,
+			"description": "20%"
+		},
+		{
+			"title": "wait",
+			"time": 10,
+			"description": ""
+		},
+		{
+			"title": "pour",
+			"time": 10,
+			"description": "20%"
+		},
+		{
+			"title": "swirl",
+			"time": 5,
+			"description": "gently"
+		},
+		{
+			"title": "wait",
+			"time": 55,
+			"description": ""
+		}
+	]
+}
