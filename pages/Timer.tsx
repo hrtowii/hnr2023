@@ -34,7 +34,6 @@ export default function CountDownCircleTimer(props): any {
 			}, 500);
 		}
 	}, [completed]);
-	console.log(props.route.params);
 
 	return (
 		<View style={styles.CountDownCircleTimer}>
