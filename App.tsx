@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 // or any pure javascript modules available in npm
 import { createStackNavigator } from "@react-navigation/stack";
 import Menu from "./pages/Menu";
-import Ratio from "./pages/Ratio";
+import Brew from "./pages/Brew";
 import Timer from "./pages/Timer";
 import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
@@ -26,7 +26,7 @@ export default function App() {
 							component={Menu}
 							initialParams={{ set: setCoffee }}
 						/>
-						<Stack.Screen name="Ratio" component={Ratio} />
+						<Stack.Screen name="Brew" component={Brew}/>
 						<Stack.Screen name="Timer" component={Timer} />
 						<Stack.Screen name="Done" component={Done} />
 					</Stack.Navigator>
