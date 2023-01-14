@@ -1,10 +1,5 @@
 import { Text } from "@ui-kitten/components";
-import {
-	View,
-	StyleSheet,
-	Image,
-	TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Coffee } from "../utils/utils";
 import { useContext } from "react";
 import { CoffeeContext } from "../context/CoffeeContext";
@@ -28,10 +23,12 @@ export const MenuCard = (props: Props) => {
 			}}
 		>
 			<Text category="h3">{props.coffee.name}</Text>
-			{ props.coffee.name ?
-				<Image style={{width: 160, height: 160,
-					borderRadius: 8,
-					marginTop: 10}} source={stringToImage(props.coffee.name)} /> :
+			{props.coffee.name ? (
+				<Image
+					style={{ width: 160, height: 160, borderRadius: 8, marginTop: 10 }}
+					source={stringToImage(props.coffee.name)}
+				/>
+			) : (
 				<View
 					style={{
 						padding: 80,
@@ -40,8 +37,7 @@ export const MenuCard = (props: Props) => {
 						backgroundColor: "#ecf0f1",
 					}}
 				/>
-			}
-
+			)}
 		</TouchableOpacity>
 	);
 };
