@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CoffeeContext } from "../components/context/CoffeeContext";
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { Button } from "@ui-kitten/components";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,7 +10,7 @@ import { Audio } from 'expo-av';
 export default function CountDownCircleTimer(props): any {
 	const coffee = useContext(CoffeeContext);
   
-  const [sound, setSound] = React.useState();
+  const [sound, setSound] = useState();
 
   async function playSound() {
     console.log('Loading Sound');
@@ -31,7 +31,7 @@ export default function CountDownCircleTimer(props): any {
     await sound.playAsync();
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     return sound
       ? () => {
           //console.log('Unloading Sound');

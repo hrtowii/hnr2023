@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 import Svg, { Circle, G } from "react-native-svg";
 
 export default function Donut(params) {

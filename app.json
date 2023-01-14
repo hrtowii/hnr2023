@@ -22,10 +22,16 @@
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/adaptive-icon.png",
 				"backgroundColor": "#FFFFFF"
-			}
+			},
+			"package": "com.provsalt.hnr2023"
 		},
 		"web": {
 			"favicon": "./assets/favicon.png"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "ead28ab5-0745-4fdd-9057-80de5a6cf09a"
+			}
 		}
 	}
 }

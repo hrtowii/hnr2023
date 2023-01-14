@@ -1,5 +1,5 @@
 import v60 from "../../assets/recipes/v60.json";
-import { Coffee, Step } from "./utils";
+import { Coffee } from "./utils";
 
 let addImages = function (x: Coffee): Coffee {
 	for (const step of x.steps) {
@@ -16,4 +16,7 @@ let addImages = function (x: Coffee): Coffee {
 	return x;
 };
 
-export const Coffees: Coffee[] = [addImages(v60 as Coffee), addImages(v60 as Coffee)];
+export const Coffees: Coffee[] = [
+	addImages(v60 as Coffee),
+	addImages(v60 as Coffee),
+];

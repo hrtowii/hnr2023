@@ -1,9 +1,6 @@
 import { Card, Text } from "@ui-kitten/components";
-import { View, StyleSheet, Image } from "react-native";
-import { Coffee, Step } from "../utils/utils";
-import { useContext } from "react";
-import { CoffeeContext } from "../context/CoffeeContext";
-import { ScrollView } from "react-native-gesture-handler";
+import { Image, StyleSheet } from "react-native";
+import { Step } from "../utils/utils";
 
 interface Props {
 	step: Step;

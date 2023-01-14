@@ -8,7 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Menu from "./pages/Menu";
 import Brew from "./pages/Brew";
 import Timer from "./pages/Timer";
-import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
+import { ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 import { CoffeeContext } from "./components/context/CoffeeContext";
 import { Coffee } from "./components/utils/utils";
