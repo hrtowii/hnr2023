@@ -1,42 +1,35 @@
 import { Card, Text } from "@ui-kitten/components";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { Coffee, Step } from "../utils/utils";
 import { useContext } from "react";
 import { CoffeeContext } from "../context/CoffeeContext";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface Props {
-	coffee: Coffee;
-	navigation: any;
-	setCoffee: (coffee: Coffee) => void;
+    step: Step,
+    index: Number
 }
 
-export const MenuCard = (props: Props) => {
-	const coffee = useContext(CoffeeContext);
+export const SummaryCard = (props: Props) => {
 	return (
-		<Card
-			style={styles.card}
-			onPress={() => {
-				props.setCoffee(props.coffee);
-				props.navigation.navigate("Ratio");
-				console.log(coffee);
-			}}
-		>
-			<Text category="h3">{props.coffee.name}</Text>
-			<View
-				style={{
-					padding: 80,
-					borderRadius: 8,
-					marginTop: 10,
-					backgroundColor: "#ecf0f1",
-				}}
-			></View>
-		</Card>
+        <Card style={styles.card}>
+            <Image style={styles.image} source={require(props.step.image)} />
+            <Text style={styles.text}>
+                `${props.step.title} ${props.step.description} for ${props.step.time}s`
+            </Text>
+        </Card>
 	);
 };
 
 const styles = StyleSheet.create({
 	card: {
-		borderRadius: 8,
-		width: "50%",
+        flex:1,
+		flexDirection: 'row'
 	},
+    image: {
+        flex:1
+    },
+    text: {
+        flex:5
+    }
 });
