@@ -1,9 +1,10 @@
 import {  View, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
-import { useState, useContext, useCallback, useMemo, useRef } from 'react';
+import { useState, useContext, useCallback, useMemo, useRef, useEffect } from 'react';
 import Constants from 'expo-constants';
 import { ApplicationProvider, Layout, Text, Button, Modal, Input } from '@ui-kitten/components';
 import * as Animatable from 'react-native-animatable';
 
+import Logo from "../assets/logo.svg";
 import { CoffeeContext } from "../components/context/CoffeeContext";
 
 import {
@@ -86,9 +87,15 @@ export default function Brew({navigation, route}){
       return settings.ratio
     }
     
+    useEffect(() => {
+      navigation.setOptions({
+        headerShown: false
+      });
+    }, [navigation]);
+  
     return <BottomSheetModalProvider>
       <Layout style={styles.container}>
-      <BottomSheetModal
+        <BottomSheetModal
           ref={bottomSheetModalRef}
           index={0}
           snapPoints={snapPoints}
@@ -103,12 +110,14 @@ export default function Brew({navigation, route}){
             <EditItem value={settings.coffee} setValue={setCoffee} name="Coffee" extraLabel="g" step={1}/>
           </Layout>
         </BottomSheetModal>
-      <Text style={{fontSize:40, maxWidth:"80%", fontWeight: "bold"}}>Coffier</Text>
+        
+      <Text style={{
+         marginTop:"20%", marginLeft:'auto', marginRight:'auto',fontSize:40, maxWidth:"80%", fontWeight: "bold"
+      }}>{coffee.name}</Text>
       <View style={{padding:10}}></View>
-      <Text style={{fontSize:40, maxWidth:"80%", fontWeight: "bold"}}>{coffee.name}</Text>
       
       <TouchableOpacity 
-        style={{marginLeft: 'auto', marginRight: 'auto'}} 
+        style={{marginTop:"40%", marginLeft: 'auto', marginRight: 'auto'}} 
         onPress={()=>{navigation.navigate("Timer", {recipe,ratio})}}
       >
         <Pressable style={styles.ButtonClick} onPress={
@@ -122,7 +131,9 @@ export default function Brew({navigation, route}){
         </Pressable>
       </TouchableOpacity>
       <View style={{padding:10}}></View>
-      <Button status="basic" onPress={handlePresentModalPress}>Configure</Button>
+      <Pressable style={{marginTop:"30%",marginLeft:"auto", marginRight:"auto"}} onPress={handlePresentModalPress}>
+        <Text style={{borderColor:"#6F4E37", borderWidth: 1, borderRadius: 100, padding: 12, width:120, textAlign: "center"}}>Configure</Text>
+      </Pressable>
     </Layout>
     </BottomSheetModalProvider>
 }
@@ -130,13 +141,11 @@ export default function Brew({navigation, route}){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    /*justifyContent: 'center',*/
     alignContent: 'center', 
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
     padding: 8,
-    
-    alignItems: 'center', justifyContent: 'center',
   },
   paragraph: {
     margin: 24,
