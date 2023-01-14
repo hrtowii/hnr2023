@@ -24,11 +24,11 @@ export const MenuCard = (props: Props) => {
 			style={styles.card}
 			onPress={() => {
 				props.setCoffee(props.coffee);
-				props.navigation.navigate("Ratio");
+				props.navigation.navigate("Brew");
 			}}
 		>
 			<Text category="h3">{props.coffee.name}</Text>
-			{ props.coffee.image ?
+			{ props.coffee.name ?
 				<Image style={{width: 160, height: 160,
 					borderRadius: 8,
 					marginTop: 10}} source={stringToImage(props.coffee.name)} /> :

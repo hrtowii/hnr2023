@@ -1,7 +1,3 @@
-import React, { ReactNode } from "react";
-import { Aeropress, V60Image } from "./images";
-import { ImageSourcePropType } from "react-native";
-
 export interface Coffee {
 	name: CoffeeList;
 	video: string;
