@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
 import { V60Image } from "../components/utils/images";
-import Logo from "../assets/logo.svg";\
+import Logo from "../assets/logo.svg";
 
 export default function Menu({ navigation, route }) {
 	useEffect(() => {
