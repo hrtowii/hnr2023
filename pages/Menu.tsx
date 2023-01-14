@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
+import { V60Image } from "../components/utils/images";
 
 export default function Menu({ navigation, route }) {
 	// function move(){
@@ -11,26 +12,11 @@ export default function Menu({ navigation, route }) {
 			<View style={styles.containerRow}>
 				<MenuCard
 					navigation={navigation}
-					coffee={{ name: "V60", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "V60", description: "Testing lol lmao hi" }}
+					coffee={{ name: "V60", image: V60Image, steps: [] }}
 					setCoffee={setCoffee}
 				/>
 			</View>
 			<View style={styles.containerRow}>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "Aeropress", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
-				<MenuCard
-					navigation={navigation}
-					coffee={{ name: "Aeropress", description: "Testing lol lmao hi" }}
-					setCoffee={setCoffee}
-				/>
 			</View>
 			{/*<Text>test</Text>*/}
 		</View>

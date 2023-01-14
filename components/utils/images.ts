@@ -1,0 +1,1 @@
+export const V60Image = require('../../assets/recipeFavicons/V60.jpg');
