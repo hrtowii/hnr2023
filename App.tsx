@@ -13,11 +13,14 @@ import * as eva from "@eva-design/eva";
 import { CoffeeContext } from "./components/context/CoffeeContext";
 import { BrewInputContext } from "./components/context/BrewInputContext";
 import { Coffee, BrewInput } from "./components/utils/utils";
-import * as SplashScreen from 'expo-splash-screen';
 
 export default function App() {
 	const [coffee, setCoffee] = useState<Coffee | null>(null);
-	const [BrewInput, setBrewInput] = useState<BrewInput | null>(null);
+	const [BrewInput, setBrewInput] = useState<BrewInput | null>({
+		ratio: 60,
+		coffee: 15,
+		water: 250
+	});
 	const Stack = createStackNavigator();
 	return (
 		<ApplicationProvider {...eva} theme={eva.light}>

@@ -3,7 +3,6 @@ import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Coffee } from "../utils/utils";
 import { useContext } from "react";
 import { CoffeeContext } from "../context/CoffeeContext";
-import SvgUri from "react-native-svg-uri";
 import { stringToImage } from "../utils/images";
 
 interface Props {
