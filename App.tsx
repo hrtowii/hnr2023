@@ -27,7 +27,6 @@ export default function App() {
 							component={Menu}
 							initialParams={{ set: setCoffee }}
 						/>
-						<Stack.Screen name="cardPreviewModal" component={CardPreviewModal} />
 						<Stack.Screen name="Brew" component={Brew}/>
 						<Stack.Screen name="Timer" component={Timer} />
 						<Stack.Screen name="Done" component={Done} />
