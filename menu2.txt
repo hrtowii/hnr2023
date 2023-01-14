@@ -1,0 +1,112 @@
+import { Text, View, StyleSheet } from "react-native";
+import { useContext, useMemo, useRef, useCallback } from "react";
+import Constants from "expo-constants";
+import { MenuCard } from "../components/card/Card";
+import { Coffee } from "../components/utils/utils";
+import { CoffeeContext } from "../components/context/CoffeeContext";
+import {
+	BottomSheetModal,
+	BottomSheetModalProvider,
+  } from '@gorhom/bottom-sheet';
+import Youtube from "../components/youtubeEmbed/Youtube";
+
+export default function Menu({ navigation, route }) {
+	// function move(){
+	// }
+	const setCoffee = route.params.set;
+	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+    const snapPoints = useMemo(() => ['90%'], []);
+    const handlePresentModalPress = useCallback(() => {
+      bottomSheetModalRef.current?.present();
+    }, []);
+
+    const coffee = useContext(CoffeeContext);
+	return (
+		<BottomSheetModalProvider>
+		<View style={styles.container}>
+			<BottomSheetModal
+          		ref={bottomSheetModalRef}
+          		index={0}
+          		snapPoints={snapPoints}
+			>
+
+			<View style={styles.contentContainer}>
+				{
+					coffee ?  
+					<>
+						<Text style={styles.h1}>{coffee.name}</Text>
+						<Youtube videoId={coffee.videoID}/>
+					</>
+					:
+					<Text></Text>
+				}
+        	</View>
+
+			</BottomSheetModal>
+
+			<View style={styles.containerRow}>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "V60", description: "Testing lol lmao hi", videoID: "1oB1oDrDkHM"}}
+					setCoffee={setCoffee}
+				/>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "Aeropress", videoID: "j6VlT_jUVPc"}}
+					setCoffee={setCoffee}
+				/>
+			</View>
+			<View style={styles.containerRow}>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "Chemex", videoID: "X5x7yoc" }}
+					setCoffee={setCoffee}
+				/>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "French Press", videoID: "st571DYYTR8" }}
+					setCoffee={setCoffee}
+				/>
+			</View>
+			{/*<Text>test</Text>*/}
+		</View>
+	</BottomSheetModalProvider>
+	);
+}
+
+const styles = StyleSheet.create({
+	container: {
+		display: "flex",
+		flexDirection: "column",
+		backgroundColor: "#ecf0f1",
+	},
+	containerRow: {
+		display: "flex",
+		paddingBottom: 4,
+		flexDirection: "row",
+	},
+	paragraph: {
+		margin: 24,
+		fontSize: 18,
+		fontWeight: "bold",
+		textAlign: "center",
+	},
+    h1: {
+      fontSize: 48,
+      fontWeight: 'bold',
+      textAlign: 'left',
+    },
+    h2: {
+      fontSize: 32,
+      textAlign: 'left',
+    },
+	contentContainer: {
+        flex: 1,
+        alignItems: 'flex-start',
+        padding: 24,
+	}
+});
