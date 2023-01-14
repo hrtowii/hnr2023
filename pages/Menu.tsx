@@ -51,7 +51,14 @@ export default function Menu({ navigation, route }) {
         	</View>
 
 			</BottomSheetModal>
-
+      <Logo
+				style={{
+					marginLeft: "auto",
+					marginRight: "auto",
+					marginTop: "30%",
+					marginBottom: "10%",
+				}}
+			/>
 			<View style={styles.containerRow}>
 				<MenuCard
 					navigation={navigation}
