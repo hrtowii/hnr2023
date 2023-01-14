@@ -11,26 +11,34 @@ import Timer from "./pages/Timer";
 import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 import { CoffeeContext } from "./components/context/CoffeeContext";
-import { Coffee } from "./components/utils/utils";
+import { BrewInputContext } from "./components/context/BrewInputContext";
+import { Coffee, BrewInput } from "./components/utils/utils";
 
 export default function App() {
 	const [coffee, setCoffee] = useState<Coffee | null>(null);
+	const [BrewInput, setBrewInput] = useState<BrewInput | null>(null);
 	const Stack = createStackNavigator();
 	return (
 		<ApplicationProvider {...eva} theme={eva.light}>
 			<CoffeeContext.Provider value={coffee}>
-				<NavigationContainer>
-					<Stack.Navigator>
-						<Stack.Screen
-							name="Menu"
-							component={Menu}
-							initialParams={{ set: setCoffee }}
-						/>
-						<Stack.Screen name="Brew" component={Brew}/>
-						<Stack.Screen name="Timer" component={Timer} />
-						<Stack.Screen name="Done" component={Done} />
-					</Stack.Navigator>
-				</NavigationContainer>
+				<BrewInputContext.Provider value={BrewInput}>
+					<NavigationContainer>
+						<Stack.Navigator>
+							<Stack.Screen
+								name="Menu"
+								component={Menu}
+								initialParams={{ set: setCoffee }}
+							/>
+							<Stack.Screen 
+								name="Brew" 
+								component={Brew}
+								initialParams={{ set: setBrewInput}}
+							/>
+							<Stack.Screen name="Timer" component={Timer} />
+							<Stack.Screen name="Done" component={Done} />
+						</Stack.Navigator>
+					</NavigationContainer>
+				</BrewInputContext.Provider>
 			</CoffeeContext.Provider>
 		</ApplicationProvider>
 	);

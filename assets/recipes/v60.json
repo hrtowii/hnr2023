@@ -2,6 +2,11 @@
     "name": "V60",
     "video": "https://youtu.be/1oB1oDrDkHM",
     "image": "../recipeFavicons/v60.svg",
+    "default": {
+        "ratio": 60,
+        "coffee": 15,
+        "water": 250
+    },
     "steps": [
         {
             "step": 1,
