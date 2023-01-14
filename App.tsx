@@ -11,9 +11,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { Card } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Menu from './pages/Menu.tsx'
-import Ratio from './pages/Ratio.tsx'
-import Timer from './pages/Timer.tsx'
+import Menu from './pages/Menu'
+import Ratio from './pages/Ratio'
+import Timer from './pages/Timer'
 
 
 export default function App() {
