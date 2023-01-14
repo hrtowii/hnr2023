@@ -86,6 +86,7 @@ export default function Brew({ navigation, route }) {
 	}, []);
 
 	const coffee = useContext(CoffeeContext);
+  console.log(coffee);
 
 	const [settings, setSettings] = useState({
 		ratio: 60,
@@ -208,23 +209,27 @@ export default function Brew({ navigation, route }) {
 					</Pressable>
 				</TouchableOpacity>
 				<View style={{ padding: 10 }}></View>
-				<Pressable
-					style={{ marginTop: "30%", marginLeft: "auto", marginRight: "auto" }}
-					onPress={handlePresentModalPress}
-				>
-					<Text
-						style={{
-							borderColor: "#6F4E37",
-							borderWidth: 1,
-							borderRadius: 100,
-							padding: 12,
-							width: 120,
-							textAlign: "center",
-						}}
+        
+        <View style={{ flexDirection: "row", marginTop: "20%", marginLeft:"auto", marginRight:"auto"}}>
+          <Button
+						style={{ borderRadius: 8 }}
+						status={"primary"}
+            onPress={handlePresentModalPress}
+						size={"giant"}
 					>
 						Configure
-					</Text>
-				</Pressable>
+					</Button>
+          <Button
+            style={{ marginLeft: 10, borderRadius: 8 }}
+            status={"danger"}
+            size={"giant"}
+            onPress={()=>{
+              navigation.navigate("Summary", {settings});
+            }}
+          >
+            Summary
+          </Button>
+        </View>
 			</Layout>
 		</BottomSheetModalProvider>
 	);

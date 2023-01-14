@@ -4,11 +4,11 @@ import { Coffee, Step } from "./utils";
 let addImages = function (x: Coffee): Coffee {
 	for (const step of x.steps) {
 		if (step.title === "Pour") {
-			step.image = "/assets/stepFavicons/pour.svg";
+			step.image = require("../../assets/stepFavicons/pour.png");
 		} else if (step.title === "Swirl") {
-			step.image = "/assets/stepFavicons/swirl.svg";
+			step.image = require("../../assets/stepFavicons/swirl.png");
 		} else if (step.title === "Wait") {
-			step.image = "/assets/stepFavicons/wait.svg";
+			step.image = require("../../assets/stepFavicons/wait.png");
 		} else {
 			console.log("Step title is not valid");
 		}

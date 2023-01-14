@@ -1,12 +1,13 @@
 import * as React from "react";
+import { View, StyleSheet } from "react-native";
 import { useState } from "react";
-import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 // or any pure javascript modules available in npm
 import { createStackNavigator } from "@react-navigation/stack";
 import Menu from "./pages/Menu";
 import Brew from "./pages/Brew";
+import Summary from "./pages/Summary";
 import CardPreviewModal from "./pages/cardPreviewModal";
 import Timer from "./pages/Timer";
 import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
@@ -28,6 +29,7 @@ export default function App() {
 							initialParams={{ set: setCoffee }}
 						/>
 						<Stack.Screen name="Brew" component={Brew}/>
+						<Stack.Screen name="Summary" component={Summary}/>
 						<Stack.Screen name="Timer" component={Timer} />
 						<Stack.Screen name="Done" component={Done} />
 					</Stack.Navigator>

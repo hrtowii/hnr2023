@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 export interface Coffee {
 	name: CoffeeList;
 	videoID: string;
-	image: string;
+	image: any;
 	steps: Step[];
 }
 

@@ -17,14 +17,14 @@ export default function Youtube(props) {
 
   return (
     <>
-    <View style={{ borderRadius: 25, marginTop: 20, height: 100, width: 345, backgroundColor: "black" }}>
+    <View style={{ borderRadius: 25, height: 200, width: 345,  }}>
         <YoutubePlayer
             height={200}
             play={playing}
             videoId={props.videoId}
             onChangeState={onStateChange}
         />
-        <Button title={playing ? "pause" : "play"} onPress={togglePlaying}></Button>
+        {/*<Button title={playing ? "pause" : "play"} onPress={togglePlaying}></Button>*/}
     </View>
     </>
   );

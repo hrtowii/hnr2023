@@ -1,6 +1,6 @@
 {
 	"name": "V60",
-	"video": "https://youtu.be/1oB1oDrDkHM",
+  "videoID": "1oB1oDrDkHM",
 	"image": "../recipeFavicons/v60.svg",
 	"steps": [
 		{
