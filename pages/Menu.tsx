@@ -1,10 +1,18 @@
 import { Text, View, StyleSheet } from "react-native";
 import { useEffect } from "react";
+import { useContext, useMemo, useRef, useCallback } from "react";
 import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
 import { V60Image } from "../components/utils/images";
 import Logo from "../assets/logo.svg";
 import { Coffees } from "../components/utils/data";
+import { Coffee } from "../components/utils/utils";
+import { CoffeeContext } from "../components/context/CoffeeContext";
+import {
+	BottomSheetModal,
+	BottomSheetModalProvider,
+  } from '@gorhom/bottom-sheet';
+import Youtube from "../components/youtubeEmbed/Youtube";
 
 export default function Menu({ navigation, route }) {
 	useEffect(() => {
@@ -14,36 +22,67 @@ export default function Menu({ navigation, route }) {
 	}, [navigation]);
 
 	const setCoffee = route.params.set;
+	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+    const snapPoints = useMemo(() => ['90%'], []);
+    const handlePresentModalPress = useCallback(() => {
+      bottomSheetModalRef.current?.present();
+    }, []);
+
+    const coffee = useContext(CoffeeContext);
 	return (
+		<BottomSheetModalProvider>
 		<View style={styles.container}>
-			<Logo
-				style={{
-					marginLeft: "auto",
-					marginRight: "auto",
-					marginTop: "30%",
-					marginBottom: "10%",
-				}}
-			/>
-			{Coffees.map((coffee, index) => {
-				// 	only 2 cards per row
-				if (index % 2 === 0) {
-					return (
-						<View style={styles.containerRow} key={index}>
-							<MenuCard
-								coffee={coffee}
-								navigation={navigation}
-								setCoffee={setCoffee}
-							/>
-							<MenuCard
-								coffee={Coffees[index + 1]}
-								navigation={navigation}
-								setCoffee={setCoffee}
-							/>
-						</View>
-					);
+			<BottomSheetModal
+          		ref={bottomSheetModalRef}
+          		index={0}
+          		snapPoints={snapPoints}
+			>
+
+			<View style={styles.contentContainer}>
+				{
+					coffee ?  
+					<>
+						<Text style={styles.h1}>{coffee.name}</Text>
+						<Youtube videoId={coffee.videoID}/>
+					</>
+					:
+					<Text></Text>
 				}
-			})}
+        	</View>
+
+			</BottomSheetModal>
+
+			<View style={styles.containerRow}>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "V60", description: "Testing lol lmao hi", videoID: "1oB1oDrDkHM"}}
+					setCoffee={setCoffee}
+				/>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "Aeropress", videoID: "j6VlT_jUVPc"}}
+					setCoffee={setCoffee}
+				/>
+			</View>
+			<View style={styles.containerRow}>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "Chemex", videoID: "X5x7yoc" }}
+					setCoffee={setCoffee}
+				/>
+				<MenuCard
+					navigation={navigation}
+					handlePresentModalPress={handlePresentModalPress}
+					coffee={{ name: "French Press", videoID: "st571DYYTR8" }}
+					setCoffee={setCoffee}
+				/>
+			</View>
+			{/*<Text>test</Text>*/}
 		</View>
+	</BottomSheetModalProvider>
 	);
 }
 
@@ -51,7 +90,7 @@ const styles = StyleSheet.create({
 	container: {
 		display: "flex",
 		flexDirection: "column",
-		backgroundColor: "#fff",
+		backgroundColor: "#ecf0f1",
 	},
 	containerRow: {
 		display: "flex",
@@ -64,4 +103,18 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		textAlign: "center",
 	},
+    h1: {
+      fontSize: 48,
+      fontWeight: 'bold',
+      textAlign: 'left',
+    },
+    h2: {
+      fontSize: 32,
+      textAlign: 'left',
+    },
+	contentContainer: {
+        flex: 1,
+        alignItems: 'flex-start',
+        padding: 24,
+	}
 });

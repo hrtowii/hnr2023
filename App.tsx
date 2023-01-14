@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Menu from "./pages/Menu";
 import Brew from "./pages/Brew";
+import CardPreviewModal from "./pages/cardPreviewModal";
 import Timer from "./pages/Timer";
 import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
@@ -26,7 +27,8 @@ export default function App() {
 							component={Menu}
 							initialParams={{ set: setCoffee }}
 						/>
-						<Stack.Screen name="Brew" component={Brew} />
+						<Stack.Screen name="cardPreviewModal" component={CardPreviewModal} />
+						<Stack.Screen name="Brew" component={Brew}/>
 						<Stack.Screen name="Timer" component={Timer} />
 						<Stack.Screen name="Done" component={Done} />
 					</Stack.Navigator>

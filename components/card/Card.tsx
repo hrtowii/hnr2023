@@ -19,7 +19,7 @@ export const MenuCard = (props: Props) => {
 			style={styles.card}
 			onPress={() => {
 				props.setCoffee(props.coffee);
-				props.navigation.navigate("Brew");
+				props.handlePresentModalPress();
 			}}
 		>
 			<Text category="h3">{props.coffee.name}</Text>
