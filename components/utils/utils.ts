@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 export interface Coffee {
     name: CoffeeList
@@ -8,9 +8,12 @@ export interface Coffee {
 }
 
 export type CoffeeList = "V60" | "Aeropress" | "Chemex" | "French Press";
+export type StepList = "Pour" | "Wait" | "Swirl";
+
 
 export interface Step {
-    title: string
+    title: StepList
     time: number // seconds
     description: string
+    image: ReactNode | null
 }
