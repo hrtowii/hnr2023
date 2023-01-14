@@ -13,20 +13,29 @@ export default function Menu({navigation, route}){
     function move(){
         navigation.navigate("Ratio", {recipe})
     }
-    return <View>
-        <MenuCard coffee={{name: "V60", description: "Testing lol lmao hi"}} />
+    return <View style={styles.container}>
+        <View style={styles.containerRow}>
+            <MenuCard coffee={{name: "V60", description: "Testing lol lmao hi"}} />
+            <MenuCard coffee={{name: "V60", description: "Testing lol lmao hi"}} />
+        </View>
+        <View style={styles.containerRow}>
+            <MenuCard coffee={{name: "Aeropress", description: "Testing lol lmao hi"}} />
+            <MenuCard coffee={{name: "Aeropress", description: "Testing lol lmao hi"}} />
+        </View>
         {/*<Text>test</Text>*/}
     </View>
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
+    display: "flex",
+     flexDirection: "column",
     backgroundColor: '#ecf0f1',
-    padding: 8,
   },
+    containerRow: {
+        display: "flex",
+        flexDirection: "row",
+    },
   paragraph: {
     margin: 24,
     fontSize: 18,

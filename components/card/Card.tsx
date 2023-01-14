@@ -1,5 +1,5 @@
 import {Card, Text} from "@ui-kitten/components";
-import {View} from "react-native";
+import {View, StyleSheet} from "react-native";
 import {Coffee} from "../utils/utils";
 
 interface Props {
@@ -8,11 +8,16 @@ interface Props {
 
 export const MenuCard = (props: Props) => {
     return (
-        <View>
-            <Card onPress={() => {}}>
-                <Text category="h1">{props.coffee.name}</Text>
+            <Card style={styles.card} onPress={() => {}}>
+                <Text category="h3">{props.coffee.name}</Text>
                 <Text category="s1">{props.coffee.description}</Text>
             </Card>
-        </View>
     )
 }
+
+const styles = StyleSheet.create({
+    card: {
+        borderRadius: 8,
+        width: "50%"
+    }
+})
