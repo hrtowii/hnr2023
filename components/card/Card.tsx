@@ -10,7 +10,6 @@ export const MenuCard = (props: Props) => {
     return (
             <Card style={styles.card} onPress={() => {}}>
                 <Text category="h3">{props.coffee.name}</Text>
-                <Text category="s1">{props.coffee.description}</Text>
             </Card>
     )
 }
