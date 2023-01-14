@@ -8,11 +8,11 @@ import Logo from "../assets/logo.svg";
 import { Coffees } from "../components/utils/data";
 import { Coffee } from "../components/utils/utils";
 import { CoffeeContext } from "../components/context/CoffeeContext";
+
 import {
 	BottomSheetModal,
 	BottomSheetModalProvider,
   } from '@gorhom/bottom-sheet';
-import Youtube from "../components/youtubeEmbed/Youtube";
 
 export default function Menu({ navigation, route }) {
 	useEffect(() => {
@@ -27,30 +27,10 @@ export default function Menu({ navigation, route }) {
     const handlePresentModalPress = useCallback(() => {
       bottomSheetModalRef.current?.present();
     }, []);
-
+  console.log(Coffee);
     const coffee = useContext(CoffeeContext);
 	return (
-		<BottomSheetModalProvider>
 		<View style={styles.container}>
-			<BottomSheetModal
-          		ref={bottomSheetModalRef}
-          		index={0}
-          		snapPoints={snapPoints}
-			>
-
-			<View style={styles.contentContainer}>
-				{
-					coffee ?  
-					<>
-						<Text style={styles.h1}>{coffee.name}</Text>
-						<Youtube videoId={coffee.videoID}/>
-					</>
-					:
-					<Text></Text>
-				}
-        	</View>
-
-			</BottomSheetModal>
       <Logo
 				style={{
 					marginLeft: "auto",
@@ -60,12 +40,12 @@ export default function Menu({ navigation, route }) {
 				}}
 			/>
 			<View style={styles.containerRow}>
-				<MenuCard
+        {[Coffees[0]].map((coffee) => <MenuCard
 					navigation={navigation}
 					handlePresentModalPress={handlePresentModalPress}
-					coffee={{ name: "V60", description: "Testing lol lmao hi", videoID: "1oB1oDrDkHM"}}
+					coffee={coffee}
 					setCoffee={setCoffee}
-				/>
+				/>)}
 				<MenuCard
 					navigation={navigation}
 					handlePresentModalPress={handlePresentModalPress}
@@ -87,9 +67,7 @@ export default function Menu({ navigation, route }) {
 					setCoffee={setCoffee}
 				/>
 			</View>
-			{/*<Text>test</Text>*/}
 		</View>
-	</BottomSheetModalProvider>
 	);
 }
 
@@ -110,11 +88,7 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		textAlign: "center",
 	},
-    h1: {
-      fontSize: 48,
-      fontWeight: 'bold',
-      textAlign: 'left',
-    },
+    
     h2: {
       fontSize: 32,
       textAlign: 'left',

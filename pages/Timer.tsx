@@ -146,6 +146,7 @@ export default function CountDownCircleTimer(props): any {
 					style={{ marginLeft: 10, borderRadius: 8 }}
 					status={"danger"}
 					onPress={props.navigation.goBack}
+          size={"giant"}
 				>
 					{allDone ? "Back" : "Stop"}
 				</Button>

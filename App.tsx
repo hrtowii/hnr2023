@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Menu from "./pages/Menu";
 import Brew from "./pages/Brew";
+import Summary from "./pages/Summary";
 import CardPreviewModal from "./pages/cardPreviewModal";
 import Timer from "./pages/Timer";
 import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
@@ -29,6 +30,7 @@ export default function App() {
 						/>
 						<Stack.Screen name="cardPreviewModal" component={CardPreviewModal} />
 						<Stack.Screen name="Brew" component={Brew}/>
+						<Stack.Screen name="Summary" component={Summary}/>
 						<Stack.Screen name="Timer" component={Timer} />
 						<Stack.Screen name="Done" component={Done} />
 					</Stack.Navigator>
