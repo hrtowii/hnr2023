@@ -12,7 +12,12 @@ export default function Menu({ navigation, route }) {
 			<View style={styles.containerRow}>
 				<MenuCard
 					navigation={navigation}
-					coffee={{ name: "V60", image: V60Image, steps: [] }}
+					coffee={{ name: "V60", image: "V60", steps: [] }}
+					setCoffee={setCoffee}
+				/>
+				<MenuCard
+					navigation={navigation}
+					coffee={{ name: "Aeropress", image: "Aeropress", steps: [] }}
 					setCoffee={setCoffee}
 				/>
 			</View>
