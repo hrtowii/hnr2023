@@ -14,7 +14,7 @@ export default function Menu({navigation, route}){
         navigation.navigate("Ratio", {recipe})
     }
     return <View>
-        <MenuCard />
+        <MenuCard coffee={{name: "V60", description: "Testing lol lmao hi"}} />
         {/*<Text>test</Text>*/}
     </View>
 }

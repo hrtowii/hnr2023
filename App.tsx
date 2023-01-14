@@ -24,8 +24,8 @@ export default function App() {
     <ApplicationProvider {...eva} theme={eva.light}>
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Ratio" component={Ratio} />
         <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="Ratio" component={Ratio} />
         <Stack.Screen name="Timer" component={Timer} />
         <Stack.Screen name="Done" component={Done} />
       </Stack.Navigator>
