@@ -4,12 +4,13 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 
 var step = 1
 
-export default function CountDownCircleTimer(): any {
+export default function CountDownCircleTimer(props): any {
+  const {duration} = props.route.params
   return (
     <View style={styles.CountDownCircleTimer}>
       <CountdownCircleTimer
         isPlaying
-        duration={timeRemaining()}
+        duration={duration}
         colors='#6F4E37'
         onComplete={() => {
           step += 1
@@ -23,9 +24,6 @@ export default function CountDownCircleTimer(): any {
   )
 }
 
-function timeRemaining () {
-  return 30
-}
 
 const styles = StyleSheet.create({
   CountDownCircleTimer: {

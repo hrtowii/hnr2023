@@ -4,15 +4,10 @@ import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 
-
-import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 import { NavigationContainer } from '@react-navigation/native'
-// or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Menu from './pages/Menu'
-import Ratio from './pages/Ratio'
+import BrewButton from './pages/BrewButton'
 import Timer from './pages/Timer'
 
 
@@ -21,18 +16,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Timer" component={Timer} />
+        <Stack.Screen name="Brew" component={BrewButton} />
+        <Stack.Screen name="Timer" component={Timer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
-
-
-
-
-
 
 function Done({navigation, route}){
   return <View style={styles.container}>
