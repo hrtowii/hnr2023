@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from 'react-native'; 
 import Constants from 'expo-constants';
+import {MenuCard} from "../components/card/Card";
 
 export default function Menu({navigation, route}){
     const recipe = {
@@ -13,7 +14,8 @@ export default function Menu({navigation, route}){
         navigation.navigate("Ratio", {recipe})
     }
     return <View>
-        <Text></Text>
+        <MenuCard />
+        {/*<Text>test</Text>*/}
     </View>
 }
 
