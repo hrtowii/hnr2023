@@ -17,7 +17,7 @@ export const MenuCard = (props: Props) => {
 			style={styles.card}
 			onPress={() => {
 				props.setCoffee(props.coffee);
-				props.navigation.navigate("Ratio");
+				props.navigation.navigate("Brew");
 				console.log(coffee);
 			}}
 		>
