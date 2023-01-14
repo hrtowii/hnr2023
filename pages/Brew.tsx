@@ -1,17 +1,28 @@
-import { Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import {
-	useCallback,
+	useState,
 	useContext,
-	useEffect,
+	useCallback,
 	useMemo,
 	useRef,
-	useState,
+	useEffect,
 } from "react";
 import Constants from "expo-constants";
-import { Input, Layout, Text } from "@ui-kitten/components";
+import {
+	ApplicationProvider,
+	Layout,
+	Text,
+	Button,
+	Modal,
+	Input,
+} from "@ui-kitten/components";
+import * as Animatable from "react-native-animatable";
+
+import Logo from "../assets/logo.svg";
 import { CoffeeContext } from "../components/context/CoffeeContext";
 
 import {
+	BottomSheet,
 	BottomSheetModal,
 	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
@@ -20,15 +31,12 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 function EditItem({ value, name, setValue, extraLabel, step }) {
 	const setVal = setValue;
-
 	function decrement() {
 		setVal(value - step);
 	}
-
 	function increment() {
 		setVal(value + step);
 	}
-
 	return (
 		<Layout style={{ flexDirection: "column", width: "100%", padding: 30 }}>
 			<Text style={{ fontSize: 20, marginLeft: "auto", marginRight: "auto" }}>
@@ -70,7 +78,6 @@ function EditItem({ value, name, setValue, extraLabel, step }) {
 		</Layout>
 	);
 }
-
 export default function Brew({ navigation, route }) {
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 	const snapPoints = useMemo(() => ["90%"], []);
@@ -86,7 +93,6 @@ export default function Brew({ navigation, route }) {
 		water: 250, // gramms
 	});
 	const roundNum = (value) => parseFloat(value.toFixed(1));
-
 	function setCoffee(value) {
 		const prevRatio = settings.ratio;
 		if (value < 0) return;
@@ -96,7 +102,6 @@ export default function Brew({ navigation, route }) {
 			water: roundNum((value / prevRatio) * 1000),
 		});
 	}
-
 	function setWater(value) {
 		const prevRatio = settings.ratio;
 		if (value < 0) return;
@@ -106,7 +111,6 @@ export default function Brew({ navigation, route }) {
 			coffee: roundNum((value * prevRatio) / 1000),
 		});
 	}
-
 	function setRatio(value) {
 		setSettings({
 			...settings,
@@ -114,7 +118,6 @@ export default function Brew({ navigation, route }) {
 			ratio: value,
 		});
 	}
-
 	function getRatio() {
 		return settings.ratio;
 	}

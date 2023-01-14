@@ -1,5 +1,5 @@
 import v60 from "../../assets/recipes/v60.json";
-import { Coffee } from "./utils";
+import { Coffee, Step } from "./utils";
 
 let addImages = function (x: Coffee): Coffee {
 	for (const step of x.steps) {

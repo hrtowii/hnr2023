@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
-import { Coffee } from "../components/utils/utils";
+import { Card, Text } from "@ui-kitten/components";
+import { View, StyleSheet, Image } from "react-native";
+import { Coffee, Step } from "../components/utils/utils";
 import { useContext } from "react";
 import { CoffeeContext } from "../components/context/CoffeeContext";
 import { SummaryCard } from "../components/card/SummaryCard";

@@ -1,6 +1,8 @@
-import { StyleSheet, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { useEffect } from "react";
+import Constants from "expo-constants";
 import { MenuCard } from "../components/card/Card";
+import { V60Image } from "../components/utils/images";
 import Logo from "../assets/logo.svg";
 import { Coffees } from "../components/utils/data";
 

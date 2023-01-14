@@ -1,6 +1,9 @@
+import React, { ReactNode } from "react";
+
 export interface Coffee {
 	name: CoffeeList;
 	video: string;
+	image: string;
 	steps: Step[];
 }
 

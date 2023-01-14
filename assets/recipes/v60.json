@@ -1,63 +1,76 @@
 {
 	"name": "V60",
 	"video": "https://youtu.be/1oB1oDrDkHM",
+	"image": "../recipeFavicons/v60.svg",
 	"steps": [
 		{
+			"step": 1,
 			"title": "Pour",
 			"time": 10,
 			"description": "20%"
 		},
 		{
+			"step": 2,
 			"title": "Swirl",
 			"time": 5,
 			"description": "Gently"
 		},
 		{
+			"step": 3,
 			"title": "Wait",
 			"time": 30,
 			"description": ""
 		},
 		{
+			"step": 4,
 			"title": "Pour",
 			"time": 15,
 			"description": "20%"
 		},
 		{
+			"step": 5,
 			"title": "Wait",
 			"time": 10,
 			"description": ""
 		},
 		{
+			"step": 6,
 			"title": "Pour",
 			"time": 10,
 			"description": "20%"
 		},
 		{
+			"step": 7,
 			"title": "Wait",
 			"time": 10,
 			"description": ""
 		},
 		{
+			"step": 8,
 			"title": "Pour",
 			"time": 10,
 			"description": "20%"
 		},
 		{
+			"step": 9,
 			"title": "Wait",
 			"time": 10,
 			"description": ""
 		},
 		{
+			"step": 10,
 			"title": "Pour",
 			"time": 10,
 			"description": "20%"
 		},
 		{
+			"step": 11,
 			"title": "Swirl",
 			"time": 5,
 			"description": "gently"
 		},
 		{
+			"step": 12,
 			"title": "Wait",
 			"time": 55,
 			"description": ""
