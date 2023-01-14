@@ -25,8 +25,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Ratio" component={Ratio} />
-        <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Timer" component={Timer} />
+        <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Done" component={Done} />
       </Stack.Navigator>
     </NavigationContainer>
