@@ -3,7 +3,10 @@ import { useState } from 'react';
 import Constants from 'expo-constants';
 import { ApplicationProvider, Layout, Text, Button, Modal, Input } from '@ui-kitten/components';
 
-import { SimpleGrid } from 'react-native-super-grid';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
 
 import Donut from "../components/Donut";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -43,7 +46,6 @@ function EditRow({ratio, setRatio}){
 }
 
 function EditItem({ratio, index, name,  setRatio}){
-  console.log(ArrowDown);
   const steps = 5;
   function setVal(value){
     setRatio({
@@ -57,9 +59,9 @@ function EditItem({ratio, index, name,  setRatio}){
   function increment(){
     setVal(ratio[index] + 5);
   }
-  return <Layout>
-    <Text style={{fontSize:20, marginLeft:"auto", marginRight:"auto"}}>{name}</Text>
-    <View style={{flexDirection: "row"}}>
+  return <Layout style={{flexDirection: "row", width:"100%"}}>
+    <Text style={{fontSize:20, marginRight:"auto"}}>{name}</Text>
+    <View style={{flexDirection: "row", marginLeft:"auto"}}>
       <TouchableOpacity activeOpacity={1} onPress={decrement} style={{float:"right", marginRight:10}}>
         <Icon name="minus" size={30} color="#000" />
       </TouchableOpacity>
@@ -93,22 +95,17 @@ export default function Ratio({navigation, route}){
              backgroundColor: '#ffffff', height:"100%",
             borderTopLeftRadius: 20, borderTopRightRadius: 20,
           }}>
-         {/*<Layout style={{padding:10, }}>
-           
-           <Layout>
-              <EditRow ratio={ratio} setRatio={setRatio}/>
-           </Layout>
-        </Layout>
-        <SimpleGrid
-          itemDimension={130}
-          data={["Ratio",2,"Coffee",4,"Water",6, 7]}
-          renderItem={({ item }) => (<Text>{item}</Text>)}
-        />*/}
-          <Text style={{fontSize:30, fontWeight: "bold"}}>Settings</Text>
-            <EditItem ratio={ratio} setRatio={setRatio} index="water" name="Water"/>
-            <EditItem ratio={ratio} setRatio={setRatio} index="coffee" name="Coffee"/>
-            <EditItem ratio={ratio} setRatio={setRatio} index="ratio" name="Ratio"/>
-            <Button status="basic" style={{marginTop:10}}onPress={()=>{setShowModal(false)}}>Close</Button>
+          <Text style={{fontSize:30, fontWeight: "bold", marginBottom:10,}}>Settings</Text>
+            <EditItem ratio={ratio} setRatio={setRatio} index="water" name="Water (grammes)"/>
+            <EditItem ratio={ratio} setRatio={setRatio} index="coffee" name="Coffee (grammes)"/>
+            <EditItem ratio={ratio} setRatio={setRatio} index="ratio" name="Ratio (grammes)"/>
+            <Button status="basic" style={{
+                position: "absolute",
+                bottom: 35,
+                marginTop:10,
+              }} onPress={()=>{setShowModal(false)}}>
+              Close
+            </Button>
         </Layout>
       </Modal>
       <Text style={{fontSize:40, maxWidth:"80%", fontWeight: "bold"}}>Coffier</Text>
