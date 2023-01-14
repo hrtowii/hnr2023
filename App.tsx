@@ -21,10 +21,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Menu" component={Menu} />
-        <Stack.Screen name="Ratio" component={Ratio} />
-        <Stack.Screen name="Timer" component={Timer} />
-        <Stack.Screen name="Done" component={Done} />
+      <Stack.Screen name="Timer" component={Timer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -38,14 +35,14 @@ export default function App() {
 
 
 function Done({navigation, route}){
-  return  <View style={styles.container}>
+  return <View style={styles.container}>
     {JSON.stringify(route.params)}
   </View>
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
