@@ -129,18 +129,17 @@ export default function CountDownCircleTimer(props): any {
        <Text
 				style={{
           fontSize: 28, padding: 0, 
-          marginTop: 
-            (textSizeRatio > 30) ? "10%":"20%",
+          marginTop: "10%",
           marginBottom: 10, paddingLeft:20, paddingRight:20
         }}>
 				{allDone || skipStepState ? <></> : coffee.steps[currStep].title}
 			</Text>
       :
-      <Text style={{marginTop:"20%"}}></Text>
+      <Text style={{marginTop:"15%"}}></Text>
       }
 			{
       coffee.steps[currStep].description && !(allDone || skipStepState)?
-      <Text style={{ fontSize: 40, marginBottom: 20, paddingLeft:20, paddingRight:20}}>
+      <Text style={{ fontSize: 40, paddingLeft:20, paddingRight:20}}>
 				{allDone ? "" :
 					coffee.steps[currStep].description.replace(
 						/\d{1,3}%/g,

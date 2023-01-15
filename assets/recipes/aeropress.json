@@ -1,13 +1,14 @@
 {
 	"name": "Aeropress",
 	"video": "https://youtu.be/j6VlT_jUVPc",
+  "videoID": "j6VlT_jUVPc", 
 	"image": "../recipeFavicons/aeropress.jpg",
 	"steps": [
 		{
 			"step": 1,
-			"title": "Place piston piece",
+			"title": "Pour then afix piston",
 			"time": 10,
-			"description": "20%"
+			"description": "100%"
 		},
 		{
 			"step": 2,

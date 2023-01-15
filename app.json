@@ -1,8 +1,8 @@
 {
 	"expo": {
-		"name": "hnr2023",
-		"slug": "hnr2023",
-		"version": "1.0.0",
+		"name": "Coffier",
+		"slug": "coffier",
+		"version": "1.0.1",
 		"orientation": "portrait",
 		"icon": "./assets/logo.png",
 		"userInterfaceStyle": "light",
