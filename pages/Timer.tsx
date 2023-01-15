@@ -5,6 +5,8 @@ import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { Button } from "@ui-kitten/components";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Audio } from "expo-av";
+import * as Speech from 'expo-speech';
+import { Step } from "../components/utils/utils";
 
 export default function CountDownCircleTimer(props): any {
 	const coffee = useContext(CoffeeContext);
@@ -31,6 +33,14 @@ export default function CountDownCircleTimer(props): any {
 
 		//console.log('Playing Sound');
 		await sound.playAsync();
+	}
+
+	function readNextStep(step: Step) {
+		Speech.speak('next ' + step.title + ' ' + step.description.replace(
+			/\d{1,3}%/g,
+			(match) =>
+				(parseInt(match) / 100) * props.route.params.settings.water + "g",
+		));
 	}
 
 	useEffect(() => {
@@ -67,6 +77,9 @@ export default function CountDownCircleTimer(props): any {
 			setTimeout(() => {
 				setCurrStep(currStep + 1);
 				setStartTime(coffee.steps[currStep + 1].time);
+				if(currStep+2 < coffee.steps.length && coffee.steps[currStep+2].title === "Pour") {
+					readNextStep(coffee.steps[currStep+2]);
+				}
 			}, 100);
 		}
 	}, [completed]);
