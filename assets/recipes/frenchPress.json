@@ -1,0 +1,42 @@
+{
+	"name": "French Press",
+	"video": "https://youtu.be/st571DYYTR8",
+	"image": "../recipeFavicons/frenchpress.jpg",
+	"steps": [
+		{
+			"step": 1,
+			"title": "Pour water over grounds",
+			"description": "20%"
+		},
+		{
+			"step": 2,
+			"title": "Wait",
+			"time": 300,
+			"description": ""
+		},
+		{
+			"step": "3",
+			"title": "Stir grounds",
+			"time": 5,
+			"description": "Break through crust"
+		},
+		{
+			"step": 4,
+			"title": "Scoop foam out of carafe",
+			"time": 10,
+			"description": ""
+		},
+		{
+			"step": 5,
+			"title": "Wait",
+			"time": 300,
+			"description": ""
+		},
+        {   
+            "step": 6,
+            "title": "Plunge filter",
+            "time": 10,
+            "description": "Only until top of liquid"
+        }
+	]
+}
