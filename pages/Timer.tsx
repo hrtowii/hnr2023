@@ -108,95 +108,102 @@ export default function CountDownCircleTimer(props): any {
 			>
 				{allDone && !skipStepState ? "Done" : `Step ${currStep + !skipStepState} / ${coffee.steps.length}`}
 			</Text>
-			<Text
+			{
+      coffee.steps[currStep].title && !(allDone || skipStepState)?
+       <Text
 				style={{
           fontSize: 28, padding: 0, 
           marginTop: 
-            (textSizeRatio > 30) ? "10%":"30%",
+            (textSizeRatio > 30) ? "10%":"20%",
           marginBottom: 10, paddingLeft:20, paddingRight:20
         }}>
 				{allDone || skipStepState ? <></> : coffee.steps[currStep].title}
 			</Text>
+      :
+      <Text style={{marginTop:"20%"}}></Text>
+      }
 			{
-      coffee.steps[currStep].description ?
+      coffee.steps[currStep].description && !(allDone || skipStepState)?
       <Text style={{ fontSize: 40, marginBottom: 20, paddingLeft:20, paddingRight:20}}>
-				{allDone || skipStepState ? (
-					<></>
-				) : (
+				{allDone ? "" :
 					coffee.steps[currStep].description.replace(
 						/\d{1,3}%/g,
 						(match) =>
 							(parseInt(match) / 100) * props.route.params.settings.water + "g",
 					)
-				)}
+				}
 			</Text>:
-      <Text style={{marginBottom: 10,}}></Text>
+      <></>
       }
-			{allDone || skipStepState ? (
-				<Icon name="check" size={200} color="#000" />
-			) : (
-				<CountdownCircleTimer
-					isPlaying={isPlaying}
-					duration={startTime}
-					colors="#6F4E37"
-					onUpdate={(remainingTime) => {
-						if (remainingTime > 0) {
-							setCompleted(false);
-						}
-						if ([1, 2, 3].map((x) => x + 1).includes(remainingTime)) {
-							setTimeout(playSound, 700);
-						}
-						if (remainingTime === 1) {
-							setTimeout(playSoundEnd, 700);
-						}
-					}}
-					onComplete={() => {
-						if (currStep >= coffee.steps.length - 1) {
-							setAllDone(true);
-							return { shouldRepeat: false };
-						}
-						setCompleted(true);
-						return { shouldRepeat: true, delay: 0.1 };
-					}}
-				>
-					{({ remainingTime }) => (
-						<Text style={styles.Text}>{remainingTime}</Text>
-					)}
-				</CountdownCircleTimer>
-			)}
-			<View style={{ flexDirection: "row", marginTop: "20%" }}>
-				{allDone ? (
-					<></>
-				) : (
-					<Button
-						style={{ borderRadius: 8 }}
-						status={"primary"}
-						onPress={() => setIsPlaying(!isPlaying)}
-						size={"giant"}
-					>
-						{isPlaying ? "Pause" : "Continue"}
-					</Button>
-				)}
-				<Button
-					style={{ marginLeft: 10, borderRadius: 8 }}
-					status={"danger"}
-					onPress={props.navigation.goBack}
-					size={"giant"}
-				>
-					{allDone ? "Back" : "Stop"}
-				</Button>
-			</View>
-      {allDone ? (
-					<></>
-				) : <Button
-					style={{ marginTop: 10, marginLeft: "auto", marginRight:"auto", borderRadius: 8 }}
-					status={"basic"}
-					onPress={skipStep}
-					size={"small"}
-				>
-					Skip
-				</Button>
-      }
+      <View style={{position: 'absolute', marginLeft:0, marginRight:0, bottom:300}}>
+        {allDone || skipStepState ? (
+          <Icon name="check" size={200} color="#000" />
+        ) : (
+          <CountdownCircleTimer
+            isPlaying={isPlaying}
+            duration={startTime}
+            colors="#6F4E37"
+            onUpdate={(remainingTime) => {
+              if (remainingTime > 0) {
+                setCompleted(false);
+              }
+              if ([1, 2, 3].map((x) => x + 1).includes(remainingTime)) {
+                setTimeout(playSound, 700);
+              }
+              if (remainingTime === 1) {
+                setTimeout(playSoundEnd, 700);
+              }
+            }}
+            onComplete={() => {
+              if (currStep >= coffee.steps.length - 1) {
+                setAllDone(true);
+                return { shouldRepeat: false };
+              }
+              setCompleted(true);
+              return { shouldRepeat: true, delay: 0.1 };
+            }}
+          >
+            {({ remainingTime }) => (
+              <Text style={styles.Text}>{remainingTime}</Text>
+            )}
+          </CountdownCircleTimer>
+        )}
+      </View>
+      <View style={{position: 'absolute', bottom:30}}>
+        <View style={{ flexDirection: "row",  }}>
+          {allDone || skipStepState ? (
+            <></>
+          ) : (
+            <Button
+              style={{ borderRadius: 8 }}
+              status={"primary"}
+              onPress={() => setIsPlaying(!isPlaying)}
+              size={"giant"}
+            >
+              {isPlaying ? "Pause" : "Continue"}
+            </Button>
+          )}
+          <Button
+            style={{ marginLeft: 10, borderRadius: 8 }}
+            status={"danger"}
+            onPress={props.navigation.goBack}
+            size={"giant"}
+          >
+            {allDone ? "Back" : "Stop"}
+          </Button>
+        </View>
+        {allDone || skipStepState ? (
+            <></>
+          ) : <Button
+            style={{ marginTop: 10, marginLeft: "auto", marginRight:"auto", borderRadius: 8 }}
+            status={"basic"}
+            onPress={skipStep}
+            size={"small"}
+          >
+            Skip
+          </Button>
+        }
+      </View>
 		</View>
 	);
 }
