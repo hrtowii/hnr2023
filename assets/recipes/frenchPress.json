@@ -32,11 +32,11 @@
 			"time": 300,
 			"description": ""
 		},
-        {   
-            "step": 6,
-            "title": "Plunge filter",
-            "time": 10,
-            "description": "Only until top of liquid"
-        }
+		{
+			"step": 6,
+			"title": "Plunge filter",
+			"time": 10,
+			"description": "Only until top of liquid"
+		}
 	]
 }

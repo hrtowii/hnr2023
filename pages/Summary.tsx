@@ -8,40 +8,48 @@ import { ScrollView } from "react-native-gesture-handler";
 import Youtube from "../components/youtubeEmbed/Youtube";
 
 interface Props {
-  coffee: Coffee;
-  navigation: any;
+	coffee: Coffee;
+	navigation: any;
 }
 
 export default function Summary(props: Props) {
-  const settings = props.route.params.settings;
-  const coffee = useContext(CoffeeContext);
-  return (
-    <ScrollView style={styles.scrollView}>
-      {
-        coffee ?
-          <>
-            <View style={{ marginLeft: "auto", marginRight: "auto" }}>
-              <Text style={styles.h1}>{coffee.name}</Text>
-              <Youtube styles={{ height: 200 }} videoId={coffee.videoID} />
-            </View>
-            {coffee.steps ? coffee.steps.map((step, index) => (
-              <SummaryCard key={index} step={step} index={index} settings={settings} />
-            )) : <></>}
-          </>
-          :
-          <></>
-      }
-    </ScrollView>
-  );
-};
+	const settings = props.route.params.settings;
+	const coffee = useContext(CoffeeContext);
+	return (
+		<ScrollView style={styles.scrollView}>
+			{coffee ? (
+				<>
+					<View style={{ marginLeft: "auto", marginRight: "auto" }}>
+						<Text style={styles.h1}>{coffee.name}</Text>
+						<Youtube styles={{ height: 200 }} videoId={coffee.videoID} />
+					</View>
+					{coffee.steps ? (
+						coffee.steps.map((step, index) => (
+							<SummaryCard
+								key={index}
+								step={step}
+								index={index}
+								settings={settings}
+							/>
+						))
+					) : (
+						<></>
+					)}
+				</>
+			) : (
+				<></>
+			)}
+		</ScrollView>
+	);
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flexDirection: "column"
-  },
-  h1: {
-    fontSize: 48,
-    fontWeight: "bold",
-    textAlign: "left"
-  }
+	scrollView: {
+		flexDirection: "column",
+	},
+	h1: {
+		fontSize: 48,
+		fontWeight: "bold",
+		textAlign: "left",
+	},
 });
