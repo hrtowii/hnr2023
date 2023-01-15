@@ -14,7 +14,7 @@ export const stringToImage = (image: CoffeeList): ImageSourcePropType => {
 			return Aeropress;
 		case "Chemex":
 			return Chemex;
-		case "FrenchPress":
+		case "French Press":
 			return FrenchPress;
 		default:
 			return V60Image;
