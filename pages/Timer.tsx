@@ -96,6 +96,9 @@ export default function CountDownCircleTimer(props): any {
       setIsPlaying(false); // Stop counter issues
       setCurrStep(currStep + 1);
       setStartTime(coffee.steps[currStep + 1].time);
+      if(currStep+2 < coffee.steps.length && coffee.steps[currStep+2].title === "Pour") {
+        readNextStep(coffee.steps[currStep+2]);
+      }
     }
   }
   useEffect(() => {
