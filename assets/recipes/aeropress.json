@@ -25,7 +25,7 @@
 			"step": 4,
 			"title": "Wait",
 			"time": 30,
-			"description": "%"
+			"description": ""
 		},
 		{
 			"step": 5,
