@@ -1,0 +1,37 @@
+{
+	"name": "Aeropress",
+	"video": "https://youtu.be/j6VlT_jUVPc",
+	"image": "../recipeFavicons/aeropress.jpg",
+	"steps": [
+		{
+			"step": 1,
+			"title": "Place piston piece",
+			"time": 10,
+			"description": "20%"
+		},
+		{
+			"step": 2,
+			"title": "Wait",
+			"time": 120,
+			"description": ""
+		},
+		{
+			"step": 3,
+			"title": "Swirl brewer",
+			"time": 5,
+			"description": "Gently"
+		},
+		{
+			"step": 4,
+			"title": "Wait",
+			"time": 30,
+			"description": "%"
+		},
+		{
+			"step": 5,
+			"title": "Press all the way",
+			"time": 10,
+			"description": "Gently"
+		}
+	]
+}
