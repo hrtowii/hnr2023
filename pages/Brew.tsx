@@ -197,7 +197,7 @@ export default function Brew({ navigation, route }) {
         </TouchableOpacity>
         <View style={{ padding: 10 }}></View>
 
-        <View style={{ flexDirection: "row", marginTop: "20%", marginLeft: "auto", marginRight: "auto" }}>
+        <View style={{ flexDirection: "column", marginTop: "20%", marginLeft: "auto", marginRight: "auto" }}>
           <Button
             style={{ borderRadius: 8 }}
             status={"primary"}
@@ -207,8 +207,8 @@ export default function Brew({ navigation, route }) {
             Configure
           </Button>
           <Button
-            style={{ marginLeft: 10, borderRadius: 8 }}
-            status={"danger"}
+            style={{ marginTop: 10, borderRadius: 8 }}
+            status={"basic"}
             size={"giant"}
             onPress={() => {
               navigation.navigate("Summary", { settings });

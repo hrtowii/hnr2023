@@ -25,7 +25,7 @@ export default function Summary(props: Props) {
               <Youtube styles={{ height: 200 }} videoId={coffee.videoID} />
             </View>
             {coffee.steps ? coffee.steps.map((step, index) => (
-              <SummaryCard step={step} index={index} settings={settings} />
+              <SummaryCard key={index} step={step} index={index} settings={settings} />
             )) : <></>}
           </>
           :
