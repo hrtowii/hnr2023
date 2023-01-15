@@ -25,6 +25,7 @@ export default function Youtube(props) {
             onChangeState={onStateChange}
         />
         <Button title={playing ? "pause" : "play"} onPress={togglePlaying}></Button>
+        <Button title={"start"} onPress={() => navigator.navigate('Brew')></Button>
     </View>
     </>
   );
