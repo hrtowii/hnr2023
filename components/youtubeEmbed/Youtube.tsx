@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useRef } from "react";
-import { View, Button, Text } from "react-native";
+import React, { useCallback, useState } from "react";
+import { View } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 
 export default function Youtube(props) {
@@ -17,15 +17,15 @@ export default function Youtube(props) {
 
   return (
     <>
-    <View style={{ borderRadius: 25, height: 200, width: 345,  }}>
+      <View style={{ borderRadius: 25, height: 200, width: 345 }}>
         <YoutubePlayer
-            height={200}
-            play={playing}
-            videoId={props.videoId}
-            onChangeState={onStateChange}
+          height={200}
+          play={playing}
+          videoId={props.videoId}
+          onChangeState={onStateChange}
         />
         {/*<Button title={playing ? "pause" : "play"} onPress={togglePlaying}></Button>*/}
-    </View>
+      </View>
     </>
   );
 }
