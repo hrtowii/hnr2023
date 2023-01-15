@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { View } from "react-native";
+import { View, Button } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 
 export default function Youtube(props) {
@@ -24,7 +24,7 @@ export default function Youtube(props) {
           videoId={props.videoId}
           onChangeState={onStateChange}
         />
-        {/*<Button title={playing ? "pause" : "play"} onPress={togglePlaying}></Button>*/}
+        <Button title={playing ? "pause" : "play"} onPress={togglePlaying}></Button>
       </View>
     </>
   );
