@@ -1,35 +1,45 @@
 import { Card, Text } from "@ui-kitten/components";
-import { View, StyleSheet, Image } from "react-native";
-import { Coffee, Step } from "../utils/utils";
-import { useContext } from "react";
-import { CoffeeContext } from "../context/CoffeeContext";
-import { ScrollView } from "react-native-gesture-handler";
+import { Image, StyleSheet, View } from "react-native";
+import { Step } from "../utils/utils";
 
 interface Props {
-	step: Step;
-	index: Number;
+  step: Step;
+  index: Number;
 }
 
-export const SummaryCard = (props: Props) => {
-	return (
-		<Card style={styles.card}>
-			<Image style={styles.image} source={require(props.step.image)} />
-			<Text style={styles.text}>
-				`${props.step.title} ${props.step.description} for ${props.step.time}s`
-			</Text>
-		</Card>
-	);
-};
+export function SummaryCard(props: Props) {
+  const description = props.step.description.replace(
+    /\d{1,3}%/g,
+    (match) =>
+      (parseInt(match) / 100) * props.settings.water + "g"
+  ) + (props.step.description ? " " : "");
+  return (
+    <Card>
+      <View style={styles.card}>
+        <Image style={styles.image} source={props.step.image} />
+        <Text style={styles.text}>
+          {`${props.step.title} ${description}for ${props.step.time}s`}
+        </Text>
+      </View>
+    </Card>
+  );
+}
 
 const styles = StyleSheet.create({
-	card: {
-		flex: 1,
-		flexDirection: "row",
-	},
-	image: {
-		flex: 1,
-	},
-	text: {
-		flex: 5,
-	},
+  card: {
+    flex: 1,
+    flexDirection: "row",
+    padding: 0
+  },
+  image: {
+    /*https://stackoverflow.com/questions/29476165/image-resizing-in-react-native*/
+    flex: 1,
+    width: null,
+    height: 30, /*null,*/
+    resizeMode: "contain"
+  },
+  text: {
+    marginLeft: 10,
+    flex: 5
+  }
 });
