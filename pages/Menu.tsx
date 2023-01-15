@@ -34,32 +34,20 @@ export default function Menu({ navigation, route }) {
         }}
       />
       <View style={styles.containerRow}>
-        {[Coffees[0]].map((coffee) => <MenuCard
+        {[Coffees[0], Coffees[1]].map((coffee) => <MenuCard
           navigation={navigation}
           handlePresentModalPress={handlePresentModalPress}
           coffee={coffee}
           setCoffee={setCoffee}
         />)}
-        <MenuCard
-          navigation={navigation}
-          handlePresentModalPress={handlePresentModalPress}
-          coffee={{ name: "Aeropress", videoID: "j6VlT_jUVPc" }}
-          setCoffee={setCoffee}
-        />
       </View>
       <View style={styles.containerRow}>
-        <MenuCard
+        {[Coffees[2], Coffees[3]].map((coffee) => <MenuCard
           navigation={navigation}
           handlePresentModalPress={handlePresentModalPress}
-          coffee={{ name: "Chemex", videoID: "X5x7yoc" }}
+          coffee={coffee}
           setCoffee={setCoffee}
-        />
-        <MenuCard
-          navigation={navigation}
-          handlePresentModalPress={handlePresentModalPress}
-          coffee={{ name: "French Press", videoID: "st571DYYTR8" }}
-          setCoffee={setCoffee}
-        />
+        />)}
       </View>
     </View>
   );

@@ -1,4 +1,7 @@
 import v60 from "../../assets/recipes/v60.json";
+import aeropress from "../../assets/recipes/aeropress.json";
+import chemex from "../../assets/recipes/chemex.json";
+import frenchPress from "../../assets/recipes/frenchPress.json";
 import { Coffee } from "./utils";
 
 let addImages = function(x: Coffee): Coffee {
@@ -18,5 +21,7 @@ let addImages = function(x: Coffee): Coffee {
 
 export const Coffees: Coffee[] = [
   addImages(v60 as Coffee),
-  addImages(v60 as Coffee)
+  addImages(aeropress as Coffee),
+  addImages(chemex as Coffee),
+  addImages(frenchPress as Coffee)
 ];
