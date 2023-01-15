@@ -60,16 +60,42 @@ export default function CountDownCircleTimer(props): any {
 		coffee.steps.length > 0 ? coffee.steps[0].time : 0,
 	);
 	const [allDone, setAllDone] = useState(false);
-
+  const [skipStepState, setSkipStepState] = useState(false);
+  
 	useEffect(() => {
 		if (completed) {
 			setTimeout(() => {
 				setCurrStep(currStep + 1);
 				setStartTime(coffee.steps[currStep + 1].time);
-			}, 500);
+			}, 100);
 		}
 	}, [completed]);
+  
+  function skipStep(){
+    playSoundEnd()
+    if (currStep == coffee.steps.length - 1){
+      setAllDone(true);
+      setIsPlaying(false);
+      return
+    }
+    if (currStep < coffee.steps.length - 1){
+      setSkipStepState(true); // Skip curr & resume next one
+      setIsPlaying(false); // Stop counter issues
+      setCurrStep(currStep + 1);
+      setStartTime(coffee.steps[currStep + 1].time);
+    }
+  }
+  useEffect(() => {
+    console.log("SkipState", skipStepState);
+		if (skipStep){
+      setTimeout(() => {
+        setSkipStepState(false);
+        setIsPlaying(true);
+      }, 1000);
+    }
+	}, [skipStepState]);
 
+  const textSizeRatio = (coffee.steps[currStep].title.length + coffee.steps[currStep].description.length)
 	return (
 		<View style={styles.CountDownCircleTimer}>
 			<Text
@@ -80,15 +106,21 @@ export default function CountDownCircleTimer(props): any {
 					fontWeight: "bold",
 				}}
 			>
-				{allDone ? "Done" : `Step ${currStep + 1} / ${coffee.steps.length}`}
+				{allDone && !skipStepState ? "Done" : `Step ${currStep + !skipStepState} / ${coffee.steps.length}`}
 			</Text>
 			<Text
-				style={{ fontSize: 28, padding: 0, marginTop: "30%", marginBottom: 10 }}
-			>
-				{allDone ? <></> : coffee.steps[currStep].title}
+				style={{
+          fontSize: 28, padding: 0, 
+          marginTop: 
+            (textSizeRatio > 30) ? "10%":"30%",
+          marginBottom: 10, paddingLeft:20, paddingRight:20
+        }}>
+				{allDone || skipStepState ? <></> : coffee.steps[currStep].title}
 			</Text>
-			<Text style={{ fontSize: 40, marginBottom: 20 }}>
-				{allDone ? (
+			{
+      coffee.steps[currStep].description ?
+      <Text style={{ fontSize: 40, marginBottom: 20, paddingLeft:20, paddingRight:20}}>
+				{allDone || skipStepState ? (
 					<></>
 				) : (
 					coffee.steps[currStep].description.replace(
@@ -97,8 +129,10 @@ export default function CountDownCircleTimer(props): any {
 							(parseInt(match) / 100) * props.route.params.settings.water + "g",
 					)
 				)}
-			</Text>
-			{allDone ? (
+			</Text>:
+      <Text style={{marginBottom: 10,}}></Text>
+      }
+			{allDone || skipStepState ? (
 				<Icon name="check" size={200} color="#000" />
 			) : (
 				<CountdownCircleTimer
@@ -122,7 +156,7 @@ export default function CountDownCircleTimer(props): any {
 							return { shouldRepeat: false };
 						}
 						setCompleted(true);
-						return { shouldRepeat: true, delay: 0.5 };
+						return { shouldRepeat: true, delay: 0.1 };
 					}}
 				>
 					{({ remainingTime }) => (
@@ -152,6 +186,17 @@ export default function CountDownCircleTimer(props): any {
 					{allDone ? "Back" : "Stop"}
 				</Button>
 			</View>
+      {allDone ? (
+					<></>
+				) : <Button
+					style={{ marginTop: 10, marginLeft: "auto", marginRight:"auto", borderRadius: 8 }}
+					status={"basic"}
+					onPress={skipStep}
+					size={"small"}
+				>
+					Skip
+				</Button>
+      }
 		</View>
 	);
 }

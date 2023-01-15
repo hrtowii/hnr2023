@@ -6,6 +6,7 @@
 		{
 			"step": 1,
 			"title": "Pour water over grounds",
+			"time": 60,
 			"description": "20%"
 		},
 		{
@@ -15,7 +16,7 @@
 			"description": ""
 		},
 		{
-			"step": "3",
+			"step": 3,
 			"title": "Stir grounds",
 			"time": 5,
 			"description": "Break through crust"
